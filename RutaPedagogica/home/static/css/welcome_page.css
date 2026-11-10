@@ -110,6 +110,23 @@ svg:not(:root) {
     margin: 15px auto 0;
 }
 
+.acceso-btn {
+    display: inline-block;
+    margin-top: 24px;
+    padding: 12px 28px;
+    background-color: #308282;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 6px;
+}
+
+.acceso-btn:hover {
+    background-color: #246868;
+    color: #fff;
+}
+
 .footer {
     display: flex;
     flex-wrap: wrap;
