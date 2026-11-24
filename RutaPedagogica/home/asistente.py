@@ -301,12 +301,12 @@ def _ayuda_usuarios(n):
     if "listar" in n or "ver" in n or "quienes" in n:
         return _listar_usuarios()
     return _msg(
-        "Desde Usuarios creás cuentas del panel. Hay tres perfiles: Administrador, Editor y Autor. "
+        "Desde Usuarios creás cuentas del panel. Hay tres perfiles: Administrador, Carga y Visor. "
         "También puedo dar de alta a alguien si me decís «crear usuario».",
         pasos=[
-            "Administrador: control total, usuarios y ajustes.",
-            "Editor: crea, edita y publica páginas, imágenes y documentos.",
-            "Autor: carga contenidos; un editor o admin los publica.",
+            "Administrador: crea cuentas y administra todo el sitio.",
+            "Carga: sube y publica páginas, imágenes y videos.",
+            "Visor: entra al panel y consulta, sin poder guardar cambios.",
             "Para desactivar: no borres de entrada, pedime «desactivar usuario NOMBRE».",
         ],
         enlaces=[{"label": "Usuarios", "url": "/admin/users/"}],
@@ -356,16 +356,16 @@ def _flujo_usuario(request, texto, estado):
         estado.update({"paso": 4, "datos": datos})
         _guardar(request, estado)
         return _msg(
-            "¿Qué perfil? Administrador, Editor o Autor.",
-            chips=["Administrador", "Editor", "Autor", "Cancelar"],
+            "¿Qué perfil? Administrador, Carga o Visor.",
+            chips=["Administrador", "Carga", "Visor", "Cancelar"],
         )
     if paso == 4:
         n = _norm(texto)
-        perfil = "editor"
+        perfil = "carga"
         if "admin" in n:
             perfil = "administrador"
-        elif "autor" in n:
-            perfil = "autor"
+        elif "visor" in n or "ver" in n:
+            perfil = "visor"
         datos["perfil"] = perfil
         estado.update({"paso": 5, "datos": datos})
         _guardar(request, estado)

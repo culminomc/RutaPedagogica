@@ -51,6 +51,21 @@
     background: linear-gradient(180deg, #ff512f 0%, #f09819 100%) !important;
 }
 
+.rp-salir-btn {
+    border: 0;
+    border-radius: 999px;
+    background: #1a1a1a;
+    color: #fff;
+    font-weight: 700;
+    padding: 0.45rem 0.9rem;
+    cursor: pointer;
+}
+
+.rp-salir-form {
+    display: inline-flex;
+    margin-left: 0.4rem;
+}
+
 #wagtail-sidebar .sidebar-menu-item__link,
 #wagtail-sidebar [class*="menuitem"] span {
     white-space: normal;
