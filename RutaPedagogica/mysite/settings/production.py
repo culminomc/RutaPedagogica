@@ -21,11 +21,11 @@ ALLOWED_HOSTS = [
 
 CSRF_TRUSTED_ORIGINS = [
     o.strip()
-    for o in os.environ.get("CSRF_TRUSTED_ORIGINS", "http://10.1.9.194").split(",")
+    for o in os.environ.get("CSRF_TRUSTED_ORIGINS", "http://10.1.9.194:83").split(",")
     if o.strip()
 ]
 
-WAGTAILADMIN_BASE_URL = os.environ.get("WAGTAILADMIN_BASE_URL", "http://10.1.9.194")
+WAGTAILADMIN_BASE_URL = os.environ.get("WAGTAILADMIN_BASE_URL", "http://10.1.9.194:83")
 
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 
