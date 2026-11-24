@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     "search",
     "wagtail.contrib.forms",
     "wagtail.contrib.redirects",
+    "wagtail.contrib.settings",
     "wagtail.embeds",
     "wagtail.sites",
     "wagtail.users",
@@ -156,6 +157,9 @@ STORAGES = {
 # Django sets a maximum of 1000 fields per form by default, but particularly complex page models
 # can exceed this limit within Wagtail's page editor.
 DATA_UPLOAD_MAX_NUMBER_FIELDS = 10_000
+# Techo técnico: los videos grandes van a disco. El tope real se configura en Ajustes del sitio.
+DATA_UPLOAD_MAX_MEMORY_SIZE = 2 * 1024 * 1024 * 1024
+FILE_UPLOAD_MAX_MEMORY_SIZE = 20 * 1024 * 1024
 
 
 # Wagtail settings
@@ -178,7 +182,24 @@ WAGTAILADMIN_BASE_URL = "http://127.0.0.1:8001"
 # This can be omitted to allow all files, but note that this may present a security risk
 # if untrusted users are allowed to upload files -
 # see https://docs.wagtail.org/en/stable/advanced_topics/deploying.html#user-uploaded-files
-WAGTAILDOCS_EXTENSIONS = ['csv', 'docx', 'key', 'odt', 'pdf', 'pptx', 'rtf', 'txt', 'xlsx', 'zip']
-
-# Maximum upload size for documents in bytes.
-WAGTAILDOCS_MAX_UPLOAD_SIZE = 10 * 1024 * 1024  # 10MB
+WAGTAILDOCS_EXTENSIONS = [
+    "csv",
+    "docx",
+    "key",
+    "odt",
+    "pdf",
+    "pptx",
+    "rtf",
+    "txt",
+    "xlsx",
+    "zip",
+    "mp4",
+    "webm",
+    "mov",
+    "mkv",
+    "avi",
+    "m4v",
+]
+# Techo Django; el formulario usa el valor de Ajustes del sitio.
+WAGTAILDOCS_MAX_UPLOAD_SIZE = 2 * 1024 * 1024 * 1024
+WAGTAILDOCS_DOCUMENT_FORM_BASE = "home.forms.DocumentoForm"

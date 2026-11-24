@@ -1,2 +1,4 @@
 Django>=6.1,<6.2
 wagtail>=8.1,<8.2
+mssql-django>=2.0
+pyodbc>=5.0

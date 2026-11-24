@@ -2,6 +2,7 @@ from django.db import models
 from modelcluster.fields import ParentalKey
 from modelcluster.models import ClusterableModel
 from wagtail.admin.panels import FieldPanel, HelpPanel, InlinePanel, MultiFieldPanel, ObjectList, PageChooserPanel, TabbedInterface
+from wagtail.contrib.settings.models import BaseGenericSetting, register_setting
 from wagtail.fields import RichTextField
 from wagtail.models import Orderable, Page
 from wagtail.snippets.models import register_snippet
@@ -336,7 +337,7 @@ class ContenidoPage(Page):
     intro = models.TextField("bajada", blank=True)
     cuerpo = RichTextField(
         "contenido",
-        features=["h2", "h3", "bold", "italic", "ol", "ul", "link", "document-link", "image"],
+        features=["h2", "h3", "bold", "italic", "ol", "ul", "link", "document-link", "image", "embed"],
     )
     imagen = models.ForeignKey(
         "wagtailimages.Image",
@@ -346,10 +347,26 @@ class ContenidoPage(Page):
         related_name="+",
         verbose_name="imagen principal",
     )
+    video_url = models.URLField(
+        "video embebido (YouTube o Vimeo)",
+        blank=True,
+        help_text="Pegá el enlace público del video. Se muestra en la página.",
+    )
+    video_archivo = models.ForeignKey(
+        "wagtaildocs.Document",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+",
+        verbose_name="archivo de video",
+        help_text="Subí un MP4, WebM o MOV desde Documentos. El tamaño máximo se configura en Ajustes del sitio.",
+    )
 
     content_panels = Page.content_panels + [
         FieldPanel("intro"),
         FieldPanel("imagen"),
+        FieldPanel("video_url"),
+        FieldPanel("video_archivo"),
         FieldPanel("cuerpo"),
     ]
 
@@ -361,7 +378,7 @@ class ContenidoPage(Page):
         verbose_name_plural = "Páginas de contenido"
 
 
-RICHTEXT_SECCION = ["h2", "h3", "bold", "italic", "ol", "ul", "link", "document-link", "image"]
+RICHTEXT_SECCION = ["h2", "h3", "bold", "italic", "ol", "ul", "link", "document-link", "image", "embed"]
 
 
 class RutaTematicaPage(Page):
@@ -749,3 +766,52 @@ class ConsultaViewSet(SnippetViewSet):
 
 
 register_snippet(ConsultaViewSet)
+
+
+@register_setting(icon="cog", order=850)
+class AjustesSitio(BaseGenericSetting):
+    """Límites de carga y ayudas del panel, editables sin tocar código."""
+
+    video_max_valor = models.PositiveIntegerField(
+        "tamaño máximo de video",
+        default=200,
+        help_text="Número entero. Combinado con la unidad define el tope para MP4, WebM, MOV y similares.",
+    )
+    video_max_unidad = models.CharField(
+        "unidad",
+        max_length=2,
+        choices=[("MB", "MB"), ("GB", "GB")],
+        default="MB",
+    )
+    techo_servidor_mb = models.PositiveIntegerField(
+        "techo técnico del servidor (MB)",
+        default=2048,
+        help_text="No puede superarse aunque el límite de video sea mayor. Debe coincidir con el máximo real de IIS/Apache/nginx.",
+    )
+
+    panels = [
+        HelpPanel(
+            content=(
+                "<p>Este tope se aplica a los videos subidos como documentos. "
+                "Si el servidor (IIS, Apache o nginx) tiene un límite menor, el archivo se cortará antes de llegar a Django. "
+                "En ese caso bajá el techo técnico o pedí ampliar <code>client_max_body_size</code> / <code>upload_max_filesize</code>.</p>"
+            )
+        ),
+        FieldPanel("video_max_valor"),
+        FieldPanel("video_max_unidad"),
+        FieldPanel("techo_servidor_mb"),
+    ]
+
+    class Meta:
+        verbose_name = "Ajustes de carga y videos"
+
+    def video_max_bytes(self):
+        valor = self.video_max_valor or 200
+        unidad = (self.video_max_unidad or "MB").upper()
+        bruto = valor * (1024 ** 3 if unidad == "GB" else 1024 ** 2)
+        techo = (self.techo_servidor_mb or 2048) * 1024 * 1024
+        return min(bruto, techo)
+
+    def video_max_legible(self):
+        unidad = (self.video_max_unidad or "MB").upper()
+        return f"{self.video_max_valor} {unidad}"

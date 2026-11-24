@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load static wagtailcore_tags wagtailimages_tags %}
+{% load static wagtailcore_tags wagtailimages_tags wagtailembeds_tags %}
 
 {% block title_suffix %}{% endblock %}
 {% block body_class %}template-contenido{% endblock %}
@@ -17,6 +17,8 @@
     .contenido .portada { width: 100%; border-radius: 1.4rem; max-height: 420px; object-fit: cover; margin: 1rem 0 1.5rem; }
     .contenido-nav { display: flex; justify-content: space-between; gap: 1rem; align-items: center; padding: 1rem 1.25rem; background: #fff; border-bottom: 1px solid #eee; }
     .contenido-nav a { color: #1a1a1a; font-weight: 700; text-decoration: none; }
+    .contenido-video, .contenido-video-file { width: 100%; border-radius: 1.2rem; margin: 1rem 0 1.5rem; background: #111; }
+    .contenido-video iframe { width: 100%; min-height: 360px; border: 0; border-radius: 1.2rem; }
 </style>
 {% endblock %}
 
@@ -34,6 +36,11 @@
     {% if page.imagen %}
         {% image page.imagen width-1600 as foto %}
         <img class="portada" src="{{ foto.url }}" alt="{{ page.title }}">
+    {% endif %}
+    {% if page.video_url %}
+        <div class="contenido-video">{% embed page.video_url %}</div>
+    {% elif page.video_archivo %}
+        <video class="contenido-video-file" controls preload="metadata" src="{{ page.video_archivo.url }}"></video>
     {% endif %}
     <div class="cuerpo">{{ page.cuerpo|richtext }}</div>
 </article>

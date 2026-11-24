@@ -1,11 +1,13 @@
 from django.templatetags.static import static
-from django.urls import reverse
+from django.urls import path, reverse
 from django.utils.html import format_html
 from django.utils.safestring import mark_safe
 
 from wagtail import hooks
 from wagtail.admin.menu import MenuItem
 from wagtail.admin.ui.components import Component
+
+from home import views_asistente
 
 
 class GuiaPanel(Component):
@@ -18,9 +20,12 @@ class GuiaPanel(Component):
                 <h2>Cómo editar el sitio</h2>
                 <p>Desde acá se administra toda la página pública. No hace falta tocar código.</p>
                 <ol>
+                    <li><strong>Asistente:</strong> el botón naranja de la esquina inferior derecha. Pedile en castellano que cree una página, suba un video o dé de alta un usuario.</li>
                     <li><strong>Portada:</strong> Páginas → Rutas Pedagógicas. Título, cifras, escuelas, biblioteca y contacto.</li>
                     <li><strong>Las 3 rutas:</strong> en el menú lateral, “Ruta: Videojuego”, “Ruta: Datos e IA” y “Ruta: Biotecnología”. Cada una tiene su página pública. Después de editar, pulsá Publicar.</li>
                     <li><strong>Descubrí más:</strong> menú lateral → Descubrí más. Ese es el contenido del botón naranja de la portada.</li>
+                    <li><strong>Archivos:</strong> Imágenes y Documentos (incluye videos). El tamaño máximo se cambia en Ajustes de carga y videos.</li>
+                    <li><strong>Usuarios:</strong> Usuarios, con perfiles Administrador, Editor y Autor.</li>
                     <li><strong>Consultas del formulario:</strong> Consultas de Vinculación Educativa.</li>
                 </ol>
             </section>
@@ -35,7 +40,23 @@ def agregar_guia(request, panels):
 
 @hooks.register("insert_global_admin_css")
 def css_del_admin():
-    return format_html('<link rel="stylesheet" href="{}?v=aif4">', static("css/admin.css"))
+    return format_html(
+        '<link rel="stylesheet" href="{}?v=aif5"><link rel="stylesheet" href="{}?v=aif1">',
+        static("css/admin.css"),
+        static("css/asistente.css"),
+    )
+
+
+@hooks.register("insert_global_admin_js")
+def js_del_admin():
+    return format_html('<script src="{}?v=aif2" defer></script>', static("js/asistente.js"))
+
+
+@hooks.register("register_admin_urls")
+def urls_asistente():
+    return [
+        path("asistente/chat/", views_asistente.chat_asistente, name="asistente_chat"),
+    ]
 
 
 def _item_edicion(page, label, order, icon="doc-full"):
@@ -52,6 +73,10 @@ def _item_edicion(page, label, order, icon="doc-full"):
 @hooks.register("construct_main_menu")
 def menu_paginas_editables(request, menu_items):
     from home.models import DescubriMasPage, RutaTematicaPage
+
+    menu_items.append(
+        MenuItem("Asistente IA", "#rp-asistente", icon_name="help", order=145)
+    )
 
     etiquetas = {
         "industria-del-videojuego": ("Ruta: Videojuego", 230),

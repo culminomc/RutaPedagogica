@@ -1,0 +1,128 @@
+.rp-asistente-toggle {
+    position: fixed;
+    right: 1.2rem;
+    bottom: 1.2rem;
+    z-index: 80;
+    width: 3.6rem;
+    height: 3.6rem;
+    border: 0;
+    border-radius: 999px;
+    cursor: pointer;
+    color: #fff;
+    background: linear-gradient(135deg, #ff512f 0%, #f09819 100%);
+    box-shadow: 0 12px 28px rgba(255, 81, 47, 0.38);
+    display: grid;
+    place-items: center;
+    font-size: 1.35rem;
+}
+.rp-asistente-toggle[aria-expanded="true"] {
+    background: #1a1a1a;
+}
+.rp-asistente {
+    position: fixed;
+    right: 1.2rem;
+    bottom: 5.2rem;
+    z-index: 81;
+    width: min(26.5rem, calc(100vw - 1.5rem));
+    height: min(36rem, calc(100vh - 7rem));
+    background: #fff8f0;
+    border: 1px solid rgba(26, 26, 26, 0.08);
+    border-radius: 1.25rem;
+    box-shadow: 0 24px 50px rgba(26, 26, 26, 0.18);
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    font-family: Inter, system-ui, sans-serif;
+    color: #1a1a1a;
+}
+.rp-asistente.is-open { display: flex; }
+.rp-asistente-head {
+    background: linear-gradient(90deg, #ff512f, #f09819);
+    color: #fff;
+    padding: 0.9rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 0.75rem;
+    align-items: center;
+}
+.rp-asistente-head strong { display: block; font-size: 0.98rem; }
+.rp-asistente-head span { display: block; font-size: 0.75rem; opacity: 0.9; }
+.rp-asistente-head button {
+    background: transparent;
+    border: 0;
+    color: #fff;
+    font-size: 1.4rem;
+    cursor: pointer;
+}
+.rp-asistente-log {
+    flex: 1;
+    overflow: auto;
+    padding: 0.9rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+}
+.rp-a-msg {
+    max-width: 92%;
+    padding: 0.7rem 0.85rem;
+    border-radius: 1rem;
+    font-size: 0.9rem;
+    line-height: 1.45;
+    white-space: pre-wrap;
+}
+.rp-a-msg--bot { background: #fff; border: 1px solid rgba(26,26,26,.06); }
+.rp-a-msg--user {
+    align-self: flex-end;
+    background: #1a1a1a;
+    color: #fff;
+}
+.rp-a-msg ol { margin: 0.45rem 0 0; padding-left: 1.1rem; }
+.rp-a-msg a { color: #c2410c; font-weight: 700; }
+.rp-a-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    padding: 0 0.9rem 0.45rem;
+}
+.rp-a-chips button {
+    border: 1px solid #f3c7a2;
+    background: #fff;
+    color: #c2410c;
+    border-radius: 999px;
+    padding: 0.28rem 0.7rem;
+    font-size: 0.78rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+.rp-asistente-form {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 0.4rem;
+    padding: 0.7rem;
+    border-top: 1px solid rgba(26,26,26,.06);
+    background: #fff;
+}
+.rp-asistente-form input[type="text"] {
+    border: 1px solid #eadfd0;
+    border-radius: 0.8rem;
+    padding: 0.55rem 0.7rem;
+    font: inherit;
+}
+.rp-asistente-form button[type="submit"] {
+    border: 0;
+    border-radius: 0.8rem;
+    background: #1a1a1a;
+    color: #fff;
+    padding: 0 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+.rp-asistente-form label {
+    display: grid;
+    place-items: center;
+    width: 2.3rem;
+    cursor: pointer;
+    color: #c2410c;
+    font-size: 1.15rem;
+}
+.rp-asistente-form input[type="file"] { display: none; }
