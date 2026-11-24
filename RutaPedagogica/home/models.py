@@ -29,6 +29,20 @@ LEVEL_CHOICES = [
     ("Transversal", "Transversal"),
 ]
 
+HOME_SECTION_CHOICES = [
+    ("portada", "Portada"),
+    ("ejes", "Ejes pedagógicos y 3 rutas"),
+    ("niveles", "Niveles (Inicial, Primario y Secundario)"),
+    ("carrusel", "Carrusel"),
+    ("impacto", "Impacto"),
+    ("escuelas", "Escuelas"),
+    ("galeria", "Galería y voces"),
+    ("biblioteca", "Biblioteca"),
+    ("contacto", "Contacto"),
+]
+
+DEFAULT_HOME_SECTIONS = [clave for clave, _label in HOME_SECTION_CHOICES]
+
 
 class HomePage(Page):
     eyebrow = models.CharField("etiqueta", max_length=160, default="Programa Educativo Provincial · Tierra del Fuego")
@@ -111,6 +125,16 @@ class HomePage(Page):
         "texto de rutas",
         features=["bold", "italic", "link"],
         default="<p>Propuestas articuladas para niveles <strong>Inicial, Primario y Secundario</strong> con acompañamiento de la Agencia de Innovación Fueguina.</p>",
+    )
+    niveles_etiqueta = models.CharField(
+        "etiqueta de niveles",
+        max_length=120,
+        default="Alcance curricular",
+    )
+    niveles_titulo = models.CharField(
+        "título de niveles",
+        max_length=180,
+        default="Nivel Inicial, Nivel Primario y Nivel Secundario",
     )
 
     biblioteca_etiqueta = models.CharField("etiqueta de biblioteca", max_length=120, default="Repositorio Pedagógico")
@@ -196,6 +220,23 @@ class HomePage(Page):
     edit_handler = TabbedInterface(
         [
             ObjectList(content_panels, heading="Portada"),
+            ObjectList(
+                [
+                    HelpPanel(
+                        heading="Cómo reordenar",
+                        content=(
+                            "<p>Arrastrá cada fila para mover la sección de <strong>arriba hacia abajo</strong>. "
+                            "Desmarcá <em>mostrar</em> para ocultarla sin borrar el contenido. "
+                            "Los tres niveles también se reordenan arrastrando.</p>"
+                        ),
+                    ),
+                    InlinePanel("layout_sections", label="Secciones de la página de inicio"),
+                    FieldPanel("niveles_etiqueta"),
+                    FieldPanel("niveles_titulo"),
+                    InlinePanel("niveles_home", label="Nivel Inicial, Primario y Secundario"),
+                ],
+                heading="Orden y niveles",
+            ),
             ObjectList(
                 [
                     FieldPanel("carrusel_titulo"),
@@ -295,6 +336,12 @@ class HomePage(Page):
             ObjectList(Page.settings_panels, heading="Ajustes"),
         ]
     )
+
+    def secciones_publicas(self):
+        items = list(self.layout_sections.all())
+        if not items:
+            return [type("Seccion", (), {"clave": clave, "visible": True})() for clave in DEFAULT_HOME_SECTIONS]
+        return [item for item in items if item.visible]
 
     def alcance_items(self):
         return [item.strip() for item in self.alcance.split(",") if item.strip()]
@@ -532,6 +579,51 @@ class ExplorarBloque(Orderable):
         FieldPanel("enlace_texto"),
         FieldPanel("imagen"),
     ]
+
+
+class HomeLayoutSection(Orderable):
+    page = ParentalKey(HomePage, on_delete=models.CASCADE, related_name="layout_sections")
+    clave = models.CharField("sección", max_length=30, choices=HOME_SECTION_CHOICES)
+    visible = models.BooleanField("mostrar en el sitio", default=True)
+    panels = [FieldPanel("clave"), FieldPanel("visible")]
+
+    class Meta(Orderable.Meta):
+        verbose_name = "sección de la portada"
+        verbose_name_plural = "secciones de la portada"
+
+    def __str__(self):
+        return self.get_clave_display()
+
+
+class HomeNivel(Orderable):
+    page = ParentalKey(HomePage, on_delete=models.CASCADE, related_name="niveles_home")
+    titulo = models.CharField("título", max_length=80, default="Nivel Inicial")
+    bajada = models.TextField("descripción", blank=True)
+    theme = models.CharField("color", max_length=20, choices=THEME_CHOICES, default="bio")
+    icon = models.CharField("ícono Phosphor", max_length=60, default="ph-plant")
+    pagina = models.ForeignKey(
+        "wagtailcore.Page",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+",
+        verbose_name="página vinculada",
+        help_text="Opcional. Si está cargada, el recuadro abre esa página.",
+    )
+    panels = [
+        FieldPanel("titulo"),
+        FieldPanel("bajada"),
+        FieldPanel("theme"),
+        FieldPanel("icon"),
+        PageChooserPanel("pagina"),
+    ]
+
+    class Meta(Orderable.Meta):
+        verbose_name = "nivel educativo"
+        verbose_name_plural = "niveles educativos"
+
+    def __str__(self):
+        return self.titulo
 
 
 class HeroSlide(Orderable):

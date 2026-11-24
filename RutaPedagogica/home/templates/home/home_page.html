@@ -73,10 +73,11 @@
         <nav id="mobile-menu" class="hidden border-t border-black/5 bg-white">
             <div class="max-w-6xl mx-auto px-4 py-3 grid sm:grid-cols-3 gap-2 text-sm font-semibold">
                 <a class="no-underline text-ink px-3 py-2 rounded-xl hover:bg-cream" href="#inicio">Inicio</a>
+                <a class="no-underline text-ink px-3 py-2 rounded-xl hover:bg-cream" href="#rutas">Ejes</a>
+                <a class="no-underline text-ink px-3 py-2 rounded-xl hover:bg-cream" href="#niveles">Niveles</a>
                 <a class="no-underline text-ink px-3 py-2 rounded-xl hover:bg-cream" href="#impacto">Impacto</a>
                 <a class="no-underline text-ink px-3 py-2 rounded-xl hover:bg-cream" href="#escuelas">Escuelas</a>
                 <a class="no-underline text-ink px-3 py-2 rounded-xl hover:bg-cream" href="#galeria">Galería</a>
-                <a class="no-underline text-ink px-3 py-2 rounded-xl hover:bg-cream" href="#rutas">Rutas</a>
                 <a class="no-underline text-ink px-3 py-2 rounded-xl hover:bg-cream" href="#biblioteca">Biblioteca</a>
                 <a class="no-underline text-ink px-3 py-2 rounded-xl hover:bg-cream" href="#contacto">Contacto</a>
                 <a class="no-underline text-ink px-3 py-2 rounded-xl hover:bg-cream" href="{{ page.campus_url }}">Campus Virtual</a>
@@ -86,6 +87,8 @@
     </header>
 
     <main>
+        {% for seccion in page.secciones_publicas %}
+        {% if seccion.clave == "portada" %}
         <section class="bg-cream">
             <div class="max-w-6xl mx-auto px-4 pt-10 pb-6">
                 <p class="inline-flex items-center gap-2 bg-white rounded-full px-4 py-2 shadow-sm text-xs font-bold tracking-[0.16em]">
@@ -124,6 +127,7 @@
             </div>
         </section>
 
+        {% elif seccion.clave == "carrusel" %}
         {% if page.slides.all %}
         <section class="bg-cream pb-12" aria-label="{{ page.carrusel_titulo }}">
             <div class="max-w-6xl mx-auto px-4">
@@ -157,6 +161,7 @@
         </section>
         {% endif %}
 
+        {% elif seccion.clave == "impacto" %}
         <section id="impacto" class="bg-white py-16">
             <div class="max-w-6xl mx-auto px-4">
                 <p class="text-sm font-bold tracking-[0.16em] text-[#0056b3]">{{ page.impacto_etiqueta|upper }}</p>
@@ -190,6 +195,7 @@
             </div>
         </section>
 
+        {% elif seccion.clave == "escuelas" %}
         <section id="escuelas" class="bg-cream py-16">
             <div class="max-w-6xl mx-auto px-4">
                 <p class="text-sm font-bold tracking-[0.16em] text-[#2f9e6b]">{{ page.escuelas_etiqueta|upper }}</p>
@@ -223,6 +229,7 @@
             </div>
         </section>
 
+        {% elif seccion.clave == "galeria" %}
         <section id="galeria" class="bg-white py-16">
             <div class="max-w-6xl mx-auto px-4">
                 <p class="text-sm font-bold tracking-[0.16em]">{{ page.galeria_etiqueta|upper }}</p>
@@ -263,6 +270,7 @@
             </div>
         </section>
 
+        {% elif seccion.clave == "ejes" %}
         <section id="rutas" class="bg-cream py-16">
             <div class="max-w-6xl mx-auto px-4">
                 <p class="text-sm font-bold tracking-[0.16em]">{{ page.rutas_etiqueta|upper }}</p>
@@ -288,6 +296,34 @@
             </div>
         </section>
 
+        {% elif seccion.clave == "niveles" %}
+        <section id="niveles" class="bg-white py-16">
+            <div class="max-w-6xl mx-auto px-4">
+                <p class="text-sm font-bold tracking-[0.16em]">{{ page.niveles_etiqueta|upper }}</p>
+                <h2 class="font-display font-extrabold text-3xl md:text-4xl mt-3">{{ page.niveles_titulo }}</h2>
+                <div class="mt-8 grid md:grid-cols-3 gap-4">
+                    {% for nivel in page.niveles_home.all %}
+                    <article class="level-card route-card rounded-[1.7rem] overflow-hidden bg-white">
+                        {% if nivel.pagina %}<a href="{{ nivel.pagina.url }}" class="block no-underline text-ink">{% endif %}
+                        <div class="route-header p-5 text-white" data-theme="{{ nivel.theme }}">
+                            <i class="ph {{ nivel.icon }} text-3xl"></i>
+                            <p class="text-xs font-bold tracking-wider mt-4 opacity-80">PROPUESTAS POR NIVEL</p>
+                            <h3 class="font-display font-extrabold text-2xl mt-1">{{ nivel.titulo }}</h3>
+                        </div>
+                        <div class="p-5">
+                            <p class="text-sm text-neutral-700">{{ nivel.bajada }}</p>
+                            {% if nivel.pagina %}
+                            <span class="inline-flex items-center gap-1 mt-4 font-semibold">Ver propuestas <i class="ph ph-arrow-right"></i></span>
+                            {% endif %}
+                        </div>
+                        {% if nivel.pagina %}</a>{% endif %}
+                    </article>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+
+        {% elif seccion.clave == "biblioteca" %}
         <section id="biblioteca" class="bg-white py-16">
             <div class="max-w-6xl mx-auto px-4">
                 <p class="text-sm font-bold tracking-[0.16em]">{{ page.biblioteca_etiqueta|upper }}</p>
@@ -331,6 +367,7 @@
             </div>
         </section>
 
+        {% elif seccion.clave == "contacto" %}
         <section id="contacto" class="bg-ink text-white py-16">
             <div class="max-w-6xl mx-auto px-4 grid lg:grid-cols-2 gap-10">
                 <div>
@@ -382,6 +419,8 @@
                 </form>
             </div>
         </section>
+        {% endif %}
+        {% endfor %}
     </main>
 
     <footer class="bg-[#111] text-white/70 text-sm py-6">
