@@ -22,6 +22,8 @@ class _PerfilMixin:
             self.fields["first_name"].required = False
         if "last_name" in self.fields:
             self.fields["last_name"].required = False
+        if "email" in self.fields:
+            self.fields["email"].required = False
         self.fields["perfil"] = forms.ChoiceField(
             label="Perfil",
             choices=PERFIL_CHOICES,
