@@ -1,7 +1,7 @@
 {% load static wagtailcore_tags wagtailuserbar %}
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
     <head>
         <meta charset="utf-8" />
         <title>
@@ -36,8 +36,56 @@
 
         {% block content %}{% endblock %}
 
-        {# Global javascript #}
+        <style>
+            #back-top {
+                position: fixed !important;
+                right: 1.15rem !important;
+                bottom: 5.75rem !important;
+                z-index: 90 !important;
+                width: 3.35rem !important;
+                height: 3.35rem !important;
+                display: grid !important;
+                place-items: center !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                border: 0 !important;
+                border-radius: 999px !important;
+                color: #fff !important;
+                background: linear-gradient(135deg, #ff512f 0%, #f09819 100%) !important;
+                box-shadow: 0 10px 24px rgba(255, 81, 47, 0.4) !important;
+                cursor: pointer !important;
+                opacity: 0;
+                pointer-events: none;
+                transition: opacity 0.2s ease, transform 0.2s ease;
+            }
+            #back-top.is-visible {
+                opacity: 1 !important;
+                pointer-events: auto !important;
+            }
+            #back-top svg {
+                width: 1.45rem;
+                height: 1.45rem;
+                display: block;
+            }
+        </style>
+        <button id="back-top" type="button" aria-label="Volver al inicio">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 14l6-6 6 6" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
         <script type="text/javascript" src="{% static 'js/mysite.js' %}"></script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                var top = document.getElementById("back-top");
+                if (!top) return;
+                var toggle = function () {
+                    top.classList.toggle("is-visible", window.scrollY > 240);
+                };
+                window.addEventListener("scroll", toggle, { passive: true });
+                toggle();
+                top.addEventListener("click", function () {
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                });
+            });
+        </script>
 
         {% block extra_js %}
         {# Override this in templates to add extra javascript #}

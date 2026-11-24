@@ -1,0 +1,10 @@
+{% load wagtailcore_tags %}
+<nav class="seccion-nav">
+    <a href="/#rutas">Rutas Pedagógicas</a>
+    <div class="seccion-nav-actions">
+        {% if request.user.is_staff %}
+        <a href="/admin/pages/{{ page.id }}/edit/">Editar esta página</a>
+        {% endif %}
+        <a href="/">Inicio</a>
+    </div>
+</nav>

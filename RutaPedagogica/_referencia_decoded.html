@@ -1,0 +1,2201 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rutas Pedagógicas · Agencia de Innovación Fueguina</title>
+    
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio"></script>
+    
+    
+    <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+
+    <script>
+        try {
+            if (window.tailwind) {
+                tailwind.config = {
+                    theme: {
+                        extend: {
+                            fontFamily: {
+                                sans: ['Inter', 'sans-serif'],
+                                display: ['Plus Jakarta Sans', 'sans-serif'],
+                            },
+                            colors: {
+                                tdf: {
+                                    cream: '#FDF6E3',
+                                    creamDark: '#F5EAD0',
+                                    dark: '#1A1A1A',
+                                    slate: '#2D3748',
+                                    bio: '#38A169',
+                                    bioLight: '#E6F4EA',
+                                    data: '#0056B3',
+                                    dataLight: '#E8F1FA',
+                                    game: '#E53E3E',
+                                    gameLight: '#FDE8E8',
+                                    aifOrange: '#E65100',
+                                    aifBlue: '#3182CE'
+                                }
+                            },
+                            boxShadow: {
+                                'soft': '0 10px 40px -10px rgba(26, 26, 26, 0.08)',
+                                'card': '0 4px 20px -2px rgba(26, 26, 26, 0.06)',
+                            }
+                        }
+                    }
+                };
+            }
+        } catch (err) {
+            console.warn("Configuración Tailwind aplicada en modo seguro:", err);
+        }
+    </script>
+
+    <style>
+        html, body {
+            width: 100%;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            background-color: #FFFFFF;
+            color: #1A1A1A;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            overflow-x: hidden;
+        }
+
+         
+        .bg-tdf-cream { background-color: #FDF6E3 !important; }
+        .bg-tdf-cream\/85 { background-color: rgba(253, 246, 227, 0.85) !important; }
+        .bg-tdf-cream\/70 { background-color: rgba(253, 246, 227, 0.70) !important; }
+        .bg-tdf-cream\/50 { background-color: rgba(253, 246, 227, 0.50) !important; }
+        .bg-tdf-cream\/40 { background-color: rgba(253, 246, 227, 0.40) !important; }
+        .bg-tdf-dark { background-color: #1A1A1A !important; }
+        .text-tdf-dark { color: #1A1A1A !important; }
+        .bg-tdf-bio { background-color: #38A169 !important; }
+        .text-tdf-bio { color: #38A169 !important; }
+        .bg-tdf-bioLight { background-color: #E6F4EA !important; }
+        .bg-tdf-data { background-color: #0056B3 !important; }
+        .text-tdf-data { color: #0056B3 !important; }
+        .bg-tdf-dataLight { background-color: #E8F1FA !important; }
+        .bg-tdf-game { background-color: #E53E3E !important; }
+        .text-tdf-game { color: #E53E3E !important; }
+        .bg-tdf-gameLight { background-color: #FDE8E8 !important; }
+        .shadow-soft { box-shadow: 0 10px 40px -10px rgba(26, 26, 26, 0.08); }
+        .shadow-card { box-shadow: 0 4px 20px -2px rgba(26, 26, 26, 0.06); }
+
+        .font-display {
+            font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+        }
+                    },
+                    boxShadow: {
+                        'soft': '0 10px 40px -10px rgba(26, 26, 26, 0.08)',
+                        'card': '0 4px 20px -2px rgba(26, 26, 26, 0.06)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #FFFFFF;
+            color: #1A1A1A;
+            overflow-x: hidden;
+        }
+
+        .font-display {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        @keyframes dashFlow {
+            to {
+                stroke-dashoffset: -48;
+            }
+        }
+
+        .road-dash {
+            animation: dashFlow 2.5s linear infinite;
+        }
+
+        .geo-leaf-tl { border-radius: 0 0 4rem 0; }
+        .geo-leaf-tr { border-radius: 0 0 0 4rem; }
+        .geo-leaf-bl { border-radius: 0 4rem 0 0; }
+        .geo-leaf-br { border-radius: 4rem 0 0 0; }
+
+        @keyframes floatSlow {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-6px) rotate(1.5deg); }
+        }
+        .animate-float { animation: floatSlow 4s ease-in-out infinite; }
+        .animate-float-delay { animation: floatSlow 4.5s ease-in-out 1.5s infinite; }
+
+         
+        .route-card-3d {
+            transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+            box-shadow: 
+                0 14px 30px -10px rgba(26, 26, 26, 0.14),
+                0 4px 0 0 rgba(26, 26, 26, 0.08),
+                inset 0 2px 1px rgba(255, 255, 255, 0.9);
+        }
+        .route-card-3d:hover {
+            transform: translateY(-8px) scale(1.01);
+            box-shadow: 
+                0 24px 42px -12px rgba(26, 26, 26, 0.22),
+                0 8px 0 0 rgba(26, 26, 26, 0.12),
+                inset 0 2px 2px rgba(255, 255, 255, 1);
+        }
+
+        .route-header-3d-game {
+            background: linear-gradient(145deg, #F56565 0%, #E53E3E 48%, #9B2C2C 100%);
+            box-shadow: inset 0 3px 6px rgba(255,255,255,0.45), inset 0 -6px 12px rgba(116,42,42,0.55);
+        }
+        .route-header-3d-data {
+            background: linear-gradient(145deg, #3182CE 0%, #0056B3 48%, #003366 100%);
+            box-shadow: inset 0 3px 6px rgba(255,255,255,0.45), inset 0 -6px 12px rgba(0,38,77,0.55);
+        }
+        .route-header-3d-bio {
+            background: linear-gradient(145deg, #48BB78 0%, #38A169 48%, #22543D 100%);
+            box-shadow: inset 0 3px 6px rgba(255,255,255,0.45), inset 0 -6px 12px rgba(28,69,50,0.55);
+        }
+
+        .relief-badge-3d {
+            background: linear-gradient(180deg, rgba(255,255,255,0.32) 0%, rgba(255,255,255,0.12) 100%);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.18), inset 0 1px 1px rgba(255,255,255,0.6);
+            border: 1px solid rgba(255,255,255,0.45);
+        }
+
+        .relief-icon-3d {
+            background: linear-gradient(145deg, rgba(255,255,255,0.28), rgba(255,255,255,0.06));
+            box-shadow: 0 8px 16px rgba(0,0,0,0.22), inset 0 2px 3px rgba(255,255,255,0.7), inset 0 -3px 5px rgba(0,0,0,0.25);
+            border: 1.5px solid rgba(255,255,255,0.55);
+        }
+
+         
+        @keyframes btnYouthFloat {
+            0%, 100% {
+                transform: translateY(0px) scale(1);
+                box-shadow: 0 12px 26px -6px rgba(232, 93, 36, 0.45), inset 0 1.5px 1px rgba(255, 255, 255, 0.45);
+            }
+            50% {
+                transform: translateY(-3px) scale(1.015);
+                box-shadow: 0 18px 34px -6px rgba(242, 146, 29, 0.58), inset 0 1.5px 1px rgba(255, 255, 255, 0.6);
+            }
+        }
+
+        @keyframes btnShineSweep {
+            0% { transform: translateX(-140%) skewX(-22deg); }
+            45%, 100% { transform: translateX(260%) skewX(-22deg); }
+        }
+
+        .youth-action-btn {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(90deg, #E6482E 0%, #EE6C27 50%, #F3961C 100%);
+            border: 1.5px solid rgba(255, 224, 178, 0.65);
+            border-radius: 1rem;
+            color: #FFFFFF;
+            animation: btnYouthFloat 3.4s ease-in-out infinite;
+            transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), filter 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .youth-action-btn::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 42%;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.34) 50%, rgba(255,255,255,0) 100%);
+            animation: btnShineSweep 4.2s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        .youth-action-btn:hover {
+            animation-play-state: paused;
+            transform: translateY(-4px) scale(1.025);
+            filter: brightness(1.05);
+            box-shadow: 0 20px 36px -6px rgba(230, 72, 46, 0.62), inset 0 2px 2px rgba(255, 255, 255, 0.7);
+        }
+
+        .youth-action-btn:active {
+            transform: translateY(0px) scale(0.985);
+        }
+
+         
+        .hover-accent-red,
+        .hover-accent-blue,
+        .hover-accent-green {
+            transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
+        }
+        .hover-accent-red:hover {
+            border-color: rgba(229, 62, 62, 0.55) !important;
+            box-shadow: 0 18px 36px -10px rgba(229, 62, 62, 0.24), inset 0 1px 0 rgba(255, 255, 255, 0.9) !important;
+            transform: translateY(-4px);
+        }
+        .hover-accent-blue:hover {
+            border-color: rgba(0, 86, 179, 0.55) !important;
+            box-shadow: 0 18px 36px -10px rgba(0, 86, 179, 0.24), inset 0 1px 0 rgba(255, 255, 255, 0.9) !important;
+            transform: translateY(-4px);
+        }
+        .hover-accent-green:hover {
+            border-color: rgba(56, 161, 105, 0.55) !important;
+            box-shadow: 0 18px 36px -10px rgba(56, 161, 105, 0.24), inset 0 1px 0 rgba(255, 255, 255, 0.9) !important;
+            transform: translateY(-4px);
+        }
+
+        .section-hover-red { transition: box-shadow 0.45s ease; }
+        .section-hover-red:hover { box-shadow: inset 0 4px 0 0 #E53E3E, 0 0 40px -15px rgba(229, 62, 62, 0.14); }
+
+        .section-hover-blue { transition: box-shadow 0.45s ease; }
+        .section-hover-blue:hover { box-shadow: inset 0 4px 0 0 #0056B3, 0 0 40px -15px rgba(0, 86, 179, 0.14); }
+
+        .section-hover-green { transition: box-shadow 0.45s ease; }
+        .section-hover-green:hover { box-shadow: inset 0 4px 0 0 #38A169, 0 0 40px -15px rgba(56, 161, 105, 0.14); }
+
+         
+        .hero-slide {
+            transition: opacity 1s ease-in-out, transform 6s ease-out;
+        }
+        .hero-slide.active {
+            opacity: 1;
+            transform: scale(1.03);
+        }
+        .hero-slide.inactive {
+            opacity: 0;
+            transform: scale(1);
+        }
+
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #FDF6E3; }
+        ::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 9999px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94A3B8; }
+    </style>
+</head>
+<body class="antialiased selection:bg-tdf-data selection:text-white">
+
+    
+    <div id="toast-container" class="fixed bottom-20 right-5 z-50 flex flex-col gap-3 pointer-events-none"></div>
+
+    
+    <button id="back-to-top-btn" onclick="scrollToTopSmooth()" aria-label="Volver al inicio" title="Volver al inicio"
+        class="fixed bottom-5 right-5 z-40 w-12 h-12 rounded-full bg-tdf-dark hover:bg-tdf-data text-white shadow-xl border border-white/15 flex items-center justify-center transition-all duration-300 opacity-0 translate-y-4 pointer-events-none cursor-pointer hover:-translate-y-1">
+        <i class="ph-bold ph-arrow-up text-xl"></i>
+    </button>
+
+    
+    <div class="bg-tdf-cream border-b border-amber-900/10 py-2 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2 text-xs font-medium text-tdf-dark">
+            <div class="flex items-center gap-4">
+                <div class="flex items-center gap-2">
+                    <svg class="w-6 h-6 shrink-0" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <defs>
+                            <linearGradient id="tdfRing" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+                                <stop offset="0%" stop-color="#F59E0B"/>
+                                <stop offset="35%" stop-color="#E53E3E"/>
+                                <stop offset="70%" stop-color="#38A169"/>
+                                <stop offset="100%" stop-color="#0284C7"/>
+                            </linearGradient>
+                        </defs>
+                        <circle cx="20" cy="20" r="14" stroke="url(#tdfRing)" stroke-width="7"/>
+                    </svg>
+                    <div class="leading-tight">
+                        <span class="font-bold tracking-tight block text-[11px] sm:text-xs">Gobierno de Tierra del Fuego</span>
+                        <span class="text-[10px] text-neutral-600 hidden sm:block">Antártida e Islas del Atlántico Sur</span>
+                    </div>
+                </div>
+                <span class="h-4 w-px bg-neutral-300 hidden md:inline-block"></span>
+                <div class="hidden md:flex items-center gap-2">
+                    <svg class="w-6 h-6 shrink-0" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <circle cx="9" cy="30" r="4.5" fill="#3B82F6"/>
+                        <rect x="13" y="6" width="8.5" height="28" rx="4.25" transform="rotate(-24 13 6)" fill="url(#aifGrad)"/>
+                        <circle cx="29" cy="11" r="4.5" fill="#EA580C"/>
+                        <rect x="27" y="18" width="8.5" height="17" rx="4.25" transform="rotate(-24 27 18)" fill="#EA580C"/>
+                        <defs>
+                            <linearGradient id="aifGrad" x1="13" y1="6" x2="22" y2="34" gradientUnits="userSpaceOnUse">
+                                <stop offset="0%" stop-color="#EA580C"/>
+                                <stop offset="100%" stop-color="#3B82F6"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                    <div class="leading-tight">
+                        <span class="font-bold tracking-tight block text-xs">Agencia de Innovación</span>
+                        <span class="text-[10px] text-neutral-600 block">Polos · Fábrica de Talentos</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <a href="https://www.instagram.com/aif.tdf/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-neutral-700 hover:text-pink-600 font-semibold transition-colors">
+                    <i class="ph-bold ph-instagram-logo text-sm text-pink-600"></i>
+                    <span>@aif.tdf</span>
+                    <i class="ph ph-arrow-up-right text-xs"></i>
+                </a>
+                <span class="h-3.5 w-px bg-neutral-300"></span>
+                <button onclick="toggleCMSModal()" class="inline-flex items-center gap-1.5 bg-white hover:bg-neutral-100 text-tdf-dark border border-neutral-300 px-2.5 py-1 rounded-full text-[11px] font-semibold shadow-sm transition-all cursor-pointer" title="Editor de datos, fotos y enlace de Instagram">
+                    <i class="ph-fill ph-sliders-horizontal text-tdf-data"></i>
+                    <span>Editar Datos / Media</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-neutral-200/80 transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 sm:h-20">
+                <a href="#inicio" class="flex items-center gap-3 group focus:outline-none">
+                    <div class="relative w-10 h-10 sm:w-11 sm:h-11 rounded-2xl bg-tdf-dark flex items-center justify-center shadow-md group-hover:scale-105 transition-transform overflow-hidden">
+                        <svg class="w-8 h-8" viewBox="0 0 36 36" fill="none">
+                            <path d="M4 28C10 26 12 12 18 12C24 12 26 24 32 10" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="3 4"/>
+                            <circle cx="9" cy="24" r="3.5" fill="#38A169"/>
+                            <circle cx="18" cy="12" r="3.5" fill="#0056B3"/>
+                            <circle cx="28" cy="16" r="3.5" fill="#E53E3E"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <span class="font-display font-extrabold text-lg sm:text-xl tracking-tight text-tdf-dark block leading-none whitespace-nowrap">
+                            RUTAS PEDAGÓGICAS
+                        </span>
+                        <span class="text-[11px] font-medium text-neutral-500 tracking-wide uppercase mt-1 block whitespace-nowrap">
+                            Agencia de Innovación Fueguina
+                        </span>
+                    </div>
+                </a>
+
+                <nav class="hidden lg:flex items-center gap-6 text-sm font-semibold text-neutral-700" aria-label="Navegación Principal">
+                    <a href="#impacto" class="hover:text-tdf-data transition-colors py-2 whitespace-nowrap">Datos</a>
+                    <a href="#escuelas" class="hover:text-tdf-data transition-colors py-2 whitespace-nowrap">Escuelas</a>
+                    <a href="#galeria" class="hover:text-tdf-data transition-colors py-2 whitespace-nowrap">Galería</a>
+                    <a href="#territorio" class="hover:text-tdf-data transition-colors py-2 whitespace-nowrap">Voces</a>
+                    <a href="#rutas" class="hover:text-tdf-data transition-colors py-2 whitespace-nowrap">Rutas</a>
+                    <a href="#biblioteca" class="hover:text-tdf-data transition-colors py-2 whitespace-nowrap">Guía</a>
+                    <a href="https://educaciondigital.tierradelfuego.edu.ar/campusvirtual/login/index.php" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-tdf-data hover:text-blue-800 font-bold transition-colors py-2 whitespace-nowrap">
+                        <i class="ph-bold ph-graduation-cap text-base"></i>
+                        <span>Campus Virtual TDF</span>
+                    </a>
+                </nav>
+
+                <div class="flex items-center gap-3 shrink-0">
+                    <button onclick="downloadGeneralReport()" class="hidden sm:inline-flex items-center gap-2 bg-tdf-dark hover:bg-neutral-800 text-white text-xs sm:text-sm font-semibold px-4 py-2.5 rounded-xl shadow-sm transition-all cursor-pointer whitespace-nowrap">
+                        <i class="ph-bold ph-file-pdf text-base text-amber-400"></i>
+                        <span>Informe Oficial</span>
+                    </button>
+
+                    <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="lg:hidden p-2.5 rounded-xl text-tdf-dark hover:bg-neutral-100 focus:outline-none" aria-label="Abrir menú" aria-expanded="false">
+                        <i id="mobile-menu-icon" class="ph ph-list text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-b border-neutral-200 px-4 pt-2 pb-6 space-y-2 shadow-xl">
+            <a href="#impacto" onclick="toggleMobileMenu()" class="block px-4 py-3 rounded-xl text-base font-semibold text-neutral-800 hover:bg-tdf-cream">Datos</a>
+            <a href="#escuelas" onclick="toggleMobileMenu()" class="block px-4 py-3 rounded-xl text-base font-semibold text-neutral-800 hover:bg-tdf-cream">Escuelas</a>
+            <a href="#galeria" onclick="toggleMobileMenu()" class="block px-4 py-3 rounded-xl text-base font-semibold text-neutral-800 hover:bg-tdf-cream">Galería</a>
+            <a href="#territorio" onclick="toggleMobileMenu()" class="block px-4 py-3 rounded-xl text-base font-semibold text-neutral-800 hover:bg-tdf-cream">Voces</a>
+            <a href="#rutas" onclick="toggleMobileMenu()" class="block px-4 py-3 rounded-xl text-base font-semibold text-neutral-800 hover:bg-tdf-cream">Rutas</a>
+            <a href="#biblioteca" onclick="toggleMobileMenu()" class="block px-4 py-3 rounded-xl text-base font-semibold text-neutral-800 hover:bg-tdf-cream">Guía</a>
+            <div class="pt-3 px-2 space-y-2.5">
+                <a href="https://educaciondigital.tierradelfuego.edu.ar/campusvirtual/login/index.php" target="_blank" rel="noopener noreferrer" onclick="toggleMobileMenu()" class="w-full flex items-center justify-center gap-2 bg-tdf-data text-white font-semibold py-3 rounded-xl">
+                    <i class="ph-bold ph-graduation-cap text-base"></i>
+                    <span>Campus Virtual TDF</span>
+                </a>
+                <button onclick="downloadGeneralReport(); toggleMobileMenu();" class="w-full flex items-center justify-center gap-2 bg-tdf-dark text-white font-semibold py-3 rounded-xl">
+                    <i class="ph-bold ph-download-simple"></i>
+                    <span>Informe Oficial</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main id="inicio">
+        
+        <section class="relative overflow-hidden bg-gradient-to-b from-tdf-cream/85 via-tdf-cream/45 to-white pt-10 pb-12 lg:pt-16 lg:pb-14">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
+                    
+                    <div class="lg:col-span-7 space-y-6">
+                        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-neutral-200 shadow-sm text-xs font-bold text-tdf-dark tracking-wide uppercase">
+                            <span class="flex h-2.5 w-2.5 relative">
+                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-tdf-bio opacity-75"></span>
+                                <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-tdf-bio"></span>
+                            </span>
+                            <span>Programa Educativo Provincial · Tierra del Fuego</span>
+                        </div>
+
+                        <h1 class="font-display font-extrabold text-3xl sm:text-5xl lg:text-[3.25rem] text-tdf-dark tracking-tight leading-[1.12]">
+                            Rutas Pedagógicas: <span class="text-transparent bg-clip-text bg-gradient-to-r from-tdf-bio via-tdf-data to-tdf-game">Un espacio digital</span> para integrar, organizar y compartir propuestas educativas innovadoras.
+                        </h1>
+
+                        <p class="text-base sm:text-lg text-neutral-700 font-medium leading-relaxed max-w-2xl">
+                            Articulamos ciencia, tecnología y creatividad en las aulas de <strong>Ushuaia, Tolhuin y Río Grande</strong>. Acompañamos a 56 docentes y 364 estudiantes en 7 rutas activas de construcción de conocimiento fueguino.
+                        </p>
+
+                        
+                        <div class="flex flex-wrap items-center gap-3.5 pt-2">
+                            <a href="#escuelas" class="inline-flex items-center gap-2.5 bg-tdf-dark hover:bg-neutral-800 text-white font-semibold px-7 py-4 rounded-2xl shadow-lg shadow-neutral-900/15 transition-all hover:-translate-y-0.5">
+                                <i class="ph-bold ph-buildings text-amber-400 text-lg"></i>
+                                <span>Escuelas por Ciudad</span>
+                            </a>
+                            <a href="https://polos.aif.gob.ar/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2.5 bg-white hover:bg-[#EA580C] text-[#EA580C] hover:text-white border-2 border-[#EA580C]/35 hover:border-[#EA580C] font-bold px-6 py-3.5 rounded-2xl shadow-sm transition-all hover:-translate-y-0.5">
+                                <i class="ph-bold ph-sparkle text-lg"></i>
+                                <span>Polos Creativos</span>
+                                <i class="ph-bold ph-arrow-up-right text-sm"></i>
+                            </a>
+                            <a href="https://www.aif.gob.ar/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2.5 bg-white hover:bg-tdf-data text-tdf-data hover:text-white border-2 border-tdf-data/35 hover:border-tdf-data font-bold px-6 py-3.5 rounded-2xl shadow-sm transition-all hover:-translate-y-0.5">
+                                <i class="ph-bold ph-globe text-lg"></i>
+                                <span>Sitio Web AIF</span>
+                                <i class="ph-bold ph-arrow-up-right text-sm"></i>
+                            </a>
+                        </div>
+
+                        <div class="pt-2 flex flex-wrap items-center gap-2 text-xs font-semibold text-neutral-600">
+                            <span class="uppercase tracking-wider mr-1">Alcance curricular:</span>
+                            <span class="px-3 py-1 rounded-lg bg-white border border-neutral-200/80 text-neutral-800">Nivel Inicial</span>
+                            <span class="px-3 py-1 rounded-lg bg-white border border-neutral-200/80 text-neutral-800">Nivel Primario</span>
+                            <span class="px-3 py-1 rounded-lg bg-white border border-neutral-200/80 text-neutral-800">Nivel Secundario</span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="lg:col-span-5">
+                        <div class="relative rounded-[2.25rem] bg-white p-4 sm:p-5 shadow-soft border border-neutral-200/90 overflow-hidden">
+                            <div class="grid grid-cols-3 grid-rows-2 gap-2.5 h-72 sm:h-80 relative">
+                                <div class="bg-tdf-bio geo-leaf-tl p-4 flex flex-col justify-between text-white relative overflow-hidden shadow-inner">
+                                    <div class="w-11 h-11 rounded-2xl border-2 border-white/90 flex items-center justify-center bg-white/10 backdrop-blur-xs animate-float">
+                                        <i class="ph-bold ph-flask text-2xl"></i>
+                                    </div>
+                                    <span class="text-[11px] font-bold uppercase tracking-wider opacity-90">Bioeconomía</span>
+                                </div>
+
+                                <div class="bg-tdf-data geo-leaf-tr p-4 flex flex-col justify-between text-white relative overflow-hidden shadow-inner">
+                                    <div class="flex justify-between items-start">
+                                        <div class="w-10 h-10 rounded-xl border-2 border-white/90 flex items-center justify-center bg-white/10 animate-float-delay">
+                                            <i class="ph-bold ph-chart-bar text-xl"></i>
+                                        </div>
+                                        <div class="w-10 h-10 rounded-xl border-2 border-white/90 flex items-center justify-center bg-white/10 animate-float">
+                                            <span class="font-display font-extrabold text-xs">IA</span>
+                                        </div>
+                                    </div>
+                                    <span class="text-[11px] font-bold uppercase tracking-wider opacity-90">Datos & IA</span>
+                                </div>
+
+                                <div class="bg-tdf-game geo-leaf-tl p-4 flex flex-col justify-between text-white relative overflow-hidden shadow-inner">
+                                    <div class="w-11 h-11 rounded-2xl border-2 border-white/90 flex items-center justify-center bg-white/10 self-end animate-float-delay">
+                                        <i class="ph-bold ph-game-controller text-2xl"></i>
+                                    </div>
+                                    <span class="text-[11px] font-bold uppercase tracking-wider opacity-90 text-right">Videojuegos</span>
+                                </div>
+
+                                <div class="bg-tdf-data geo-leaf-bl opacity-90"></div>
+                                <div class="bg-tdf-game geo-leaf-tr opacity-90"></div>
+                                <div class="bg-tdf-bio geo-leaf-br opacity-90"></div>
+
+                                <svg class="absolute inset-0 w-full h-full pointer-events-none z-20" viewBox="0 0 420 300" fill="none" preserveAspectRatio="none">
+                                    <path d="M-20 175 C 85 225, 165 130, 255 155 C 330 175, 375 235, 440 275" stroke="#1A1A1A" stroke-width="34" stroke-linecap="round"/>
+                                    <path class="road-dash" d="M-20 175 C 85 225, 165 130, 255 155 C 330 175, 375 235, 440 275" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="12 12"/>
+                                    
+                                    <g transform="translate(68, 128)">
+                                        <path d="M18 0C8.06 0 0 8.06 0 18C0 31.5 18 46 18 46C18 46 36 31.5 36 18C36 8.06 27.94 0 18 0Z" fill="#38A169" stroke="#FFFFFF" stroke-width="2.5"/>
+                                        <circle cx="18" cy="17" r="6.5" fill="#FDF6E3"/>
+                                    </g>
+                                    <g transform="translate(185, 92)">
+                                        <path d="M18 0C8.06 0 0 8.06 0 18C0 31.5 18 46 18 46C18 46 36 31.5 36 18C36 8.06 27.94 0 18 0Z" fill="#0056B3" stroke="#FFFFFF" stroke-width="2.5"/>
+                                        <circle cx="18" cy="17" r="6.5" fill="#FDF6E3"/>
+                                    </g>
+                                    <g transform="translate(318, 145)">
+                                        <path d="M18 0C8.06 0 0 8.06 0 18C0 31.5 18 46 18 46C18 46 36 31.5 36 18C36 8.06 27.94 0 18 0Z" fill="#E53E3E" stroke="#FFFFFF" stroke-width="2.5"/>
+                                        <circle cx="18" cy="17" r="6.5" fill="#FDF6E3"/>
+                                    </g>
+                                </svg>
+                            </div>
+
+                            <div class="mt-4 pt-3 border-t border-neutral-100 flex items-center justify-between text-xs text-neutral-600">
+                                <span class="font-semibold text-tdf-dark flex items-center gap-1.5">
+                                    <i class="ph-fill ph-map-pin text-tdf-game"></i>
+                                    <span>Recorrido Territorial TDF</span>
+                                </span>
+                                <span>Ushuaia · Tolhuin · Río Grande</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        
+        <section aria-label="Carrusel de experiencias en Tierra del Fuego" class="py-6 sm:py-10 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+                    <div class="flex items-center gap-2.5">
+                        <span class="w-2.5 h-2.5 rounded-full bg-tdf-data animate-pulse"></span>
+                        <h2 class="font-display font-extrabold text-sm sm:text-base uppercase tracking-wider text-tdf-dark">
+                            Rutas Pedagógicas en Acción · Tierra del Fuego
+                        </h2>
+                    </div>
+
+                    <div class="flex flex-wrap items-center gap-2.5">
+                        <label for="quick-carousel-upload" class="inline-flex items-center gap-2 bg-tdf-data hover:bg-blue-700 text-white text-xs font-bold px-4 py-2 rounded-xl shadow-xs transition-all cursor-pointer">
+                            <i class="ph-bold ph-upload-simple text-sm"></i>
+                            <span>Subir Fotos al Carrusel</span>
+                            <input type="file" id="quick-carousel-upload" accept="image/*" multiple class="hidden" onchange="addHeroImageFromFile(event)">
+                        </label>
+
+                        <button onclick="openHeroDBModal()" class="inline-flex items-center gap-2 bg-tdf-cream hover:bg-tdf-creamDark text-tdf-dark border border-amber-900/15 text-xs font-bold px-4 py-2 rounded-xl shadow-2xs transition-all cursor-pointer">
+                            <i class="ph-bold ph-database text-tdf-data"></i>
+                            <span>Gestionar Base de Imágenes</span>
+                        </button>
+                    </div>
+                </div>
+
+                
+                <div class="relative rounded-[2rem] overflow-hidden shadow-soft border border-neutral-200/90 bg-tdf-dark h-[280px] sm:h-[380px] lg:h-[440px] group">
+                    
+                    <div id="hero-carousel-slides" class="relative w-full h-full"></div>
+
+                    
+                    <div class="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-black/75 via-black/30 to-transparent pointer-events-none"></div>
+
+                    
+                    <button onclick="prevHeroSlide()" class="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/85 hover:bg-white text-tdf-dark shadow-md flex items-center justify-center opacity-80 group-hover:opacity-100 transition-all cursor-pointer z-20" aria-label="Anterior">
+                        <i class="ph-bold ph-caret-left text-lg"></i>
+                    </button>
+                    <button onclick="nextHeroSlide()" class="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/85 hover:bg-white text-tdf-dark shadow-md flex items-center justify-center opacity-80 group-hover:opacity-100 transition-all cursor-pointer z-20" aria-label="Siguiente">
+                        <i class="ph-bold ph-caret-right text-lg"></i>
+                    </button>
+
+                    
+                    <div class="absolute inset-x-0 bottom-0 p-5 sm:p-7 flex flex-col sm:flex-row sm:items-center justify-between gap-3 z-20">
+                        <div class="flex items-center gap-2.5 text-white">
+                            <span class="px-2.5 py-1 rounded-lg bg-white/20 backdrop-blur-xs text-[11px] font-extrabold uppercase tracking-wider">
+                                Galería Territorial
+                            </span>
+                            <p id="hero-slide-caption" class="font-display font-bold text-sm sm:text-base drop-shadow-xs">
+                                Presentación de Videojuegos · Escuelas de Tierra del Fuego
+                            </p>
+                        </div>
+                        <div id="hero-carousel-dots" class="flex items-center gap-2"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        
+        <section id="impacto" class="section-hover-blue py-12 sm:py-16 bg-white relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+                    <div>
+                        <div class="flex flex-wrap items-center gap-2.5 mb-2">
+                            <span class="text-xs font-extrabold uppercase tracking-widest text-tdf-data">
+                                Estadísticas Oficiales Verificadas
+                            </span>
+                            <span class="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-tdf-bioLight text-tdf-bio text-[11px] font-extrabold border border-tdf-bio/25">
+                                <span class="w-2 h-2 rounded-full bg-tdf-bio animate-ping"></span>
+                                Capacitaciones en curso continuo
+                            </span>
+                        </div>
+                        <h2 class="font-display font-extrabold text-2xl sm:text-4xl text-tdf-dark tracking-tight">
+                            Impacto real en Tierra del Fuego
+                        </h2>
+                        <p class="text-neutral-600 mt-2 max-w-2xl text-sm sm:text-base">
+                            Consolidado territorial de rutas registradas, docentes y estudiantes participantes en Ushuaia, Tolhuin y Río Grande. <strong>Las instancias de capacitación y acompañamiento docente se encuentran en trabajo permanente y crecimiento activo</strong> en toda la provincia.
+                        </p>
+                    </div>
+                </div>
+
+                
+                <div id="metrics-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-8"></div>
+
+                
+                <div class="flex flex-wrap items-center justify-center gap-4 mb-10">
+                    <a id="custom-youth-cta-btn" href="https://script.google.com/macros/s/AKfycbw6-k21aE__icoLThz_fuCgoM-J88MTaPj0c_njMucoeBnKAsUqam8piSUQCrxbqd26Sg/exec" target="_blank" rel="noopener noreferrer" class="youth-action-btn inline-flex items-center justify-center gap-3 px-8 sm:px-10 py-4 font-display font-extrabold text-base sm:text-lg tracking-tight cursor-pointer">
+                        <i class="ph-bold ph-sparkle text-xl text-white"></i>
+                        <span>Descubrí más</span>
+                        <i class="ph-bold ph-arrow-up-right text-lg text-white/95"></i>
+                    </a>
+                </div>
+
+                
+                <div class="bg-white rounded-3xl border border-neutral-200/90 shadow-card overflow-hidden">
+                    <div class="bg-tdf-dark text-white px-6 py-4 flex flex-wrap items-center justify-between gap-2">
+                        <span class="font-display font-bold text-sm sm:text-base">Desglose Provincial por Ciudad</span>
+                        <span class="inline-flex items-center gap-1.5 text-xs text-emerald-300 font-semibold">
+                            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                            Capacitación continua · Ciclo Lectivo Vigente
+                        </span>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse text-sm">
+                            <thead>
+                                <tr class="bg-tdf-cream/70 border-b border-neutral-200 text-xs font-extrabold uppercase tracking-wider text-neutral-600">
+                                    <th class="py-3.5 px-5">Ciudad</th>
+                                    <th class="py-3.5 px-5 text-center">Rutas registradas</th>
+                                    <th class="py-3.5 px-5 text-center">Docentes</th>
+                                    <th class="py-3.5 px-5 text-center">Estudiantes</th>
+                                    <th class="py-3.5 px-5 text-center">Total participantes</th>
+                                </tr>
+                            </thead>
+                            <tbody id="city-stats-tbody" class="divide-y divide-neutral-100"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        
+        <section id="escuelas" class="section-hover-green py-14 sm:py-20 bg-tdf-cream/50 border-y border-amber-900/10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10">
+                    <div>
+                        <span class="text-xs font-extrabold uppercase tracking-widest text-tdf-bio block mb-2">
+                            Organización Territorial
+                        </span>
+                        <h2 class="font-display font-extrabold text-2xl sm:text-4xl text-tdf-dark tracking-tight">
+                            Escuelas Participantes por Ciudad
+                        </h2>
+                        <p class="text-neutral-600 mt-2 max-w-2xl text-sm sm:text-base">
+                            Explorá las instituciones educativas organizadas por localidad: <strong>Escuelas Ushuaia</strong>, <strong>Escuelas Tolhuin</strong> y <strong>Escuelas Río Grande</strong>.
+                        </p>
+                    </div>
+
+                    
+                    <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+                        <div class="flex flex-wrap gap-1.5 bg-white p-1.5 rounded-2xl border border-neutral-200 shadow-2xs">
+                            <button onclick="setCityTab('all', this)" class="city-tab-btn px-3.5 py-2 rounded-xl text-xs font-bold bg-tdf-dark text-white shadow-sm transition-all cursor-pointer">Todas</button>
+                            <button onclick="setCityTab('Ushuaia', this)" class="city-tab-btn px-3.5 py-2 rounded-xl text-xs font-bold bg-white text-tdf-dark hover:bg-neutral-100 transition-all cursor-pointer">Ushuaia</button>
+                            <button onclick="setCityTab('Tolhuin', this)" class="city-tab-btn px-3.5 py-2 rounded-xl text-xs font-bold bg-white text-tdf-dark hover:bg-neutral-100 transition-all cursor-pointer">Tolhuin</button>
+                            <button onclick="setCityTab('Río Grande', this)" class="city-tab-btn px-3.5 py-2 rounded-xl text-xs font-bold bg-white text-tdf-dark hover:bg-neutral-100 transition-all cursor-pointer">Río Grande</button>
+                        </div>
+
+                        <div class="relative">
+                            <i class="ph ph-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-neutral-400"></i>
+                            <input type="text" id="school-search" oninput="renderCitySections()" placeholder="Buscar escuela o ruta..." class="w-full sm:w-56 pl-9 pr-4 py-2.5 rounded-2xl bg-white border border-neutral-200 text-xs font-medium focus:outline-none focus:border-tdf-data">
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div id="city-blocks-container" class="space-y-8"></div>
+            </div>
+        </section>
+
+        
+        <section id="galeria" class="section-hover-red py-14 sm:py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
+                    <div>
+                        <span class="text-xs font-extrabold uppercase tracking-widest text-tdf-game block mb-2">
+                            Registro Visual e Identidad
+                        </span>
+                        <h2 class="font-display font-extrabold text-2xl sm:text-4xl text-tdf-dark tracking-tight">
+                            Galería de Rutas: Arte IA y Fotos en Territorio
+                        </h2>
+                        <p class="text-neutral-600 mt-2 max-w-2xl text-sm sm:text-base">
+                            Combinamos ilustraciones conceptuales creadas con IA para cada ruta temática junto con espacios listos para que adjuntes tus propias fotos de cada ciudad.
+                        </p>
+                    </div>
+
+                    <label class="self-start sm:self-auto inline-flex items-center gap-2 bg-tdf-dark hover:bg-neutral-800 text-white text-xs font-bold px-5 py-3 rounded-2xl shadow-sm cursor-pointer transition-all">
+                        <i class="ph-bold ph-camera-plus text-base text-amber-400"></i>
+                        <span>Adjuntar Nueva Foto</span>
+                        <input type="file" accept="image/*" class="hidden" onchange="handleQuickPhotoUpload(event)">
+                    </label>
+                </div>
+
+                <div id="gallery-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+            </div>
+        </section>
+
+        
+        <section id="territorio" class="section-hover-blue py-14 sm:py-20 bg-tdf-cream/50 border-y border-amber-900/10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="mb-10">
+                    <span class="text-xs font-extrabold uppercase tracking-widest text-pink-600 block mb-2">
+                        Comunidad y Redes Oficiales
+                    </span>
+                    <h2 class="font-display font-extrabold text-2xl sm:text-4xl text-tdf-dark tracking-tight">
+                        Voces Docentes y Video en Instagram
+                    </h2>
+                </div>
+
+                
+                <div class="bg-white rounded-[2rem] p-6 sm:p-8 shadow-card border border-neutral-200/90 mb-12 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    <div class="lg:col-span-5">
+                        <a id="ig-video-link-card" href="https://www.instagram.com/aif.tdf/" target="_blank" rel="noopener noreferrer" class="block relative rounded-3xl overflow-hidden bg-gradient-to-br from-purple-700 via-pink-600 to-amber-500 p-6 text-white shadow-lg group">
+                            <div class="flex items-center justify-between mb-12">
+                                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/30 backdrop-blur-xs text-xs font-bold">
+                                    <i class="ph-fill ph-instagram-logo text-base"></i> @aif.tdf
+                                </span>
+                                <span class="px-2.5 py-1 rounded-lg bg-white/20 text-[11px] font-extrabold uppercase">Reel Docente</span>
+                            </div>
+
+                            <div class="flex flex-col items-center text-center my-4">
+                                <div class="w-16 h-16 rounded-full bg-white text-pink-600 flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform mb-3">
+                                    <i class="ph-fill ph-play text-3xl ml-0.5"></i>
+                                </div>
+                                <h3 id="ig-video-card-title" class="font-display font-extrabold text-lg leading-snug">
+                                    Testimonio Docente · Rutas Pedagógicas TDF
+                                </h3>
+                                <span class="text-xs text-white/90 mt-1">Hacé clic para ver el video en Instagram</span>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="lg:col-span-7 space-y-4">
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-pink-50 text-pink-700 text-xs font-extrabold">
+                            <i class="ph-bold ph-link"></i> Enlace Directo Configurable
+                        </span>
+                        <h3 class="font-display font-extrabold text-2xl text-tdf-dark">
+                            Escuchá la experiencia desde el aula en el Instagram de la Agencia
+                        </h3>
+                        <p class="text-sm text-neutral-600 leading-relaxed">
+                            Pegá aquí la URL exacta de la publicación o Reel de Instagram donde habla el docente para que quienes visiten la página ingresen directamente al video en <strong>@aif.tdf</strong>.
+                        </p>
+
+                        <div class="flex flex-col sm:flex-row gap-2.5 pt-1">
+                            <input type="url" id="ig-custom-url" value="https://www.instagram.com/aif.tdf/" placeholder="https://www.instagram.com/reel/..." class="flex-1 px-4 py-3 rounded-xl bg-neutral-50 border border-neutral-200 text-sm focus:outline-none focus:border-pink-600">
+                            <button onclick="updateInstagramVideoUrl()" class="px-5 py-3 rounded-xl bg-tdf-dark hover:bg-neutral-800 text-white text-xs font-bold transition-colors cursor-pointer shrink-0">
+                                Guardar URL
+                            </button>
+                        </div>
+
+                        <div class="pt-2">
+                            <a id="ig-primary-btn" href="https://www.instagram.com/aif.tdf/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-gradient-to-r from-purple-600 to-pink-600 hover:opacity-95 text-white font-bold text-sm px-6 py-3 rounded-2xl shadow-md transition-all">
+                                <i class="ph-bold ph-instagram-logo text-lg"></i>
+                                <span>Ir al Video y Perfil @aif.tdf</span>
+                                <i class="ph-bold ph-arrow-up-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div class="flex flex-wrap items-center justify-between gap-3 mb-6">
+                    <h3 class="font-display font-bold text-xl text-tdf-dark">Relatos en Territorio</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <button onclick="filterTestimonials('all', this)" class="testi-filter-btn px-3.5 py-1.5 rounded-full text-xs font-bold bg-tdf-dark text-white transition-all cursor-pointer">Todos</button>
+                        <button onclick="filterTestimonials('docente', this)" class="testi-filter-btn px-3.5 py-1.5 rounded-full text-xs font-bold bg-white text-neutral-700 border border-neutral-200 hover:bg-neutral-100 transition-all cursor-pointer">Docentes</button>
+                        <button onclick="filterTestimonials('estudiante', this)" class="testi-filter-btn px-3.5 py-1.5 rounded-full text-xs font-bold bg-white text-neutral-700 border border-neutral-200 hover:bg-neutral-100 transition-all cursor-pointer">Estudiantes</button>
+                    </div>
+                </div>
+                <div id="testimonials-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
+            </div>
+        </section>
+
+        
+        <section id="rutas" class="section-hover-green py-16 sm:py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-14">
+                    <span class="text-xs font-extrabold uppercase tracking-widest text-tdf-dark bg-tdf-cream px-4 py-1.5 rounded-full border border-amber-900/10 inline-block mb-3">
+                        Ejes Pedagógicos Provinciales
+                    </span>
+                    <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-tdf-dark tracking-tight">
+                        Las 3 Rutas Temáticas
+                    </h2>
+                    <p class="text-neutral-600 mt-3 text-base">
+                        Propuestas articuladas para niveles <strong>Inicial, Primario y Secundario</strong> con acompañamiento de la Agencia de Innovación Fueguina.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    
+                    <article class="route-card-3d rounded-[2rem] bg-white border border-neutral-200/90 flex flex-col overflow-hidden">
+                        <div class="route-header-3d-game p-7 text-white relative overflow-hidden">
+                            <svg class="absolute inset-0 w-full h-full opacity-20 pointer-events-none" viewBox="0 0 320 180" fill="none">
+                                <path d="M-10 150 C 90 110, 210 170, 330 95" stroke="#FFFFFF" stroke-width="14" stroke-dasharray="10 10"/>
+                            </svg>
+                            <div class="flex items-center justify-between mb-6 relative z-10">
+                                <span class="relief-badge-3d text-xs font-extrabold uppercase tracking-wider px-3.5 py-1.5 rounded-full">
+                                    Ruta 01 · Rojo
+                                </span>
+                                <div class="relief-icon-3d w-13 h-13 p-3 rounded-2xl flex items-center justify-center">
+                                    <i class="ph-bold ph-game-controller text-2xl"></i>
+                                </div>
+                            </div>
+                            <h3 class="font-display font-extrabold text-2xl leading-tight relative z-10 drop-shadow-xs">
+                                Industria del Videojuego
+                            </h3>
+                            <p class="text-white/90 text-sm mt-2 relative z-10">
+                                Diseño, narrativa interactiva, arte digital y lógica de programación lúdica.
+                            </p>
+                        </div>
+                        <div class="p-7 flex-1 flex flex-col justify-between space-y-6">
+                            <p class="text-sm text-neutral-700 leading-relaxed">
+                                Transforma a los estudiantes en creadores de experiencias interactivas con identidad fueguina, abordando mecánicas y prototipado funcional.
+                            </p>
+                            <a href="https://script.google.com/macros/s/AKfycbyCctCBuH-sWa46nHw8gi1xqv3E-fBqFDpWrrd6nkgZbiCQ076z2pHL8-V1r3hLDPu9/exec" target="_blank" rel="noopener noreferrer" class="w-full py-3.5 px-4 rounded-xl bg-tdf-gameLight hover:bg-tdf-game text-tdf-game hover:text-white font-bold text-sm transition-colors flex items-center justify-center gap-2 cursor-pointer shadow-2xs">
+                                <span>Ver progresión por niveles</span>
+                                <i class="ph-bold ph-arrow-up-right"></i>
+                            </a>
+                        </div>
+                    </article>
+
+                    
+                    <article class="route-card-3d rounded-[2rem] bg-white border border-neutral-200/90 flex flex-col overflow-hidden">
+                        <div class="route-header-3d-data p-7 text-white relative overflow-hidden">
+                            <svg class="absolute inset-0 w-full h-full opacity-20 pointer-events-none" viewBox="0 0 320 180" fill="none">
+                                <path d="M-10 135 C 110 175, 200 95, 330 130" stroke="#FFFFFF" stroke-width="14" stroke-dasharray="10 10"/>
+                            </svg>
+                            <div class="flex items-center justify-between mb-6 relative z-10">
+                                <span class="relief-badge-3d text-xs font-extrabold uppercase tracking-wider px-3.5 py-1.5 rounded-full">
+                                    Ruta 02 · Azul
+                                </span>
+                                <div class="relief-icon-3d w-13 h-13 p-3 rounded-2xl flex items-center justify-center">
+                                    <i class="ph-bold ph-cpu text-2xl"></i>
+                                </div>
+                            </div>
+                            <h3 class="font-display font-extrabold text-2xl leading-tight relative z-10 drop-shadow-xs">
+                                Ciencia de Datos e Inteligencia Artificial
+                            </h3>
+                            <p class="text-white/90 text-sm mt-2 relative z-10">
+                                Análisis de información, visualización y uso ético de modelos de IA.
+                            </p>
+                        </div>
+                        <div class="p-7 flex-1 flex flex-col justify-between space-y-6">
+                            <p class="text-sm text-neutral-700 leading-relaxed">
+                                Promueve la alfabetización en datos reales de la provincia, el entrenamiento de modelos y la reflexión crítica sobre ética en la IA.
+                            </p>
+                            <a href="https://script.google.com/macros/s/AKfycbz1rRkRHKrijBjktU59ymNBxSE62NGRtHtmCr0icjDDl1ayFg8PnHcSIJw7oiqMTI2bIA/exec" target="_blank" rel="noopener noreferrer" class="w-full py-3.5 px-4 rounded-xl bg-tdf-dataLight hover:bg-tdf-data text-tdf-data hover:text-white font-bold text-sm transition-colors flex items-center justify-center gap-2 cursor-pointer shadow-2xs">
+                                <span>Ver progresión por niveles</span>
+                                <i class="ph-bold ph-arrow-up-right"></i>
+                            </a>
+                        </div>
+                    </article>
+
+                    
+                    <article class="route-card-3d rounded-[2rem] bg-white border border-neutral-200/90 flex flex-col overflow-hidden">
+                        <div class="route-header-3d-bio p-7 text-white relative overflow-hidden">
+                            <svg class="absolute inset-0 w-full h-full opacity-20 pointer-events-none" viewBox="0 0 320 180" fill="none">
+                                <path d="M-10 115 C 100 165, 220 110, 330 155" stroke="#FFFFFF" stroke-width="14" stroke-dasharray="10 10"/>
+                            </svg>
+                            <div class="flex items-center justify-between mb-6 relative z-10">
+                                <span class="relief-badge-3d text-xs font-extrabold uppercase tracking-wider px-3.5 py-1.5 rounded-full">
+                                    Ruta 03 · Verde
+                                </span>
+                                <div class="relief-icon-3d w-13 h-13 p-3 rounded-2xl flex items-center justify-center">
+                                    <i class="ph-bold ph-flask text-2xl"></i>
+                                </div>
+                            </div>
+                            <h3 class="font-display font-extrabold text-2xl leading-tight relative z-10 drop-shadow-xs">
+                                Biotecnología y Bioeconomía
+                            </h3>
+                            <p class="text-white/90 text-sm mt-2 relative z-10">
+                                Ciencias biológicas aplicadas a los recursos naturales y sostenibilidad fueguina.
+                            </p>
+                        </div>
+                        <div class="p-7 flex-1 flex flex-col justify-between space-y-6">
+                            <p class="text-sm text-neutral-700 leading-relaxed">
+                                Conecta el laboratorio escolar con los ecosistemas subantárticos, la turba, los bosques y el mar austral para idear soluciones sostenibles.
+                            </p>
+                            <a href="https://script.google.com/macros/s/AKfycbyhREv8iO6ZnjvhXLxaIbZN7mCkJhUANTOi3eFzzVOCb_OboppY-Wu8vP5g8T-ZR9Y/exec" target="_blank" rel="noopener noreferrer" class="w-full py-3.5 px-4 rounded-xl bg-tdf-bioLight hover:bg-tdf-bio text-tdf-bio hover:text-white font-bold text-sm transition-colors flex items-center justify-center gap-2 cursor-pointer shadow-2xs">
+                                <span>Ver progresión por niveles</span>
+                                <i class="ph-bold ph-arrow-up-right"></i>
+                            </a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        
+        <section id="biblioteca" class="section-hover-blue py-16 sm:py-20 bg-tdf-cream/40 border-t border-amber-900/10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+                    <div>
+                        <span class="text-xs font-extrabold uppercase tracking-widest text-tdf-bio block mb-2">
+                            Repositorio Pedagógico
+                        </span>
+                        <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-tdf-dark tracking-tight">
+                            Biblioteca de Manuales y Guías
+                        </h2>
+                        <p class="text-neutral-600 mt-1.5 text-sm">
+                            Explorá los materiales por eje temático (<strong>Verde</strong> Bioeconomía, <strong>Azul</strong> Ciencia de Datos e IA, <strong>Rojo</strong> Videojuegos) o accedé al Campus Virtual.
+                        </p>
+                    </div>
+
+                    <div class="flex flex-wrap items-center gap-2">
+                        <a href="https://educaciondigital.tierradelfuego.edu.ar/campusvirtual/login/index.php" target="_blank" rel="noopener noreferrer" class="hover-accent-blue inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-extrabold bg-tdf-data text-white shadow-xs transition-all">
+                            <i class="ph-bold ph-graduation-cap text-sm"></i>
+                            <span>Campus Virtual TDF</span>
+                            <i class="ph-bold ph-arrow-up-right text-xs"></i>
+                        </a>
+                        <button onclick="filterResources('all', this)" class="res-filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-tdf-dark text-white transition-all cursor-pointer">Todos</button>
+                        <button onclick="filterResources('Inicial', this)" class="res-filter-btn hover-accent-green px-4 py-2 rounded-xl text-xs font-bold bg-white text-neutral-700 border border-neutral-200 transition-all cursor-pointer">Inicial</button>
+                        <button onclick="filterResources('Primario', this)" class="res-filter-btn hover-accent-blue px-4 py-2 rounded-xl text-xs font-bold bg-white text-neutral-700 border border-neutral-200 transition-all cursor-pointer">Primario</button>
+                        <button onclick="filterResources('Secundario', this)" class="res-filter-btn hover-accent-red px-4 py-2 rounded-xl text-xs font-bold bg-white text-neutral-700 border border-neutral-200 transition-all cursor-pointer">Secundario</button>
+                    </div>
+                </div>
+
+                
+                <div class="hover-accent-blue mb-6 rounded-3xl bg-gradient-to-r from-tdf-data to-blue-700 text-white p-6 sm:p-7 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-5 shadow-md">
+                    <div class="flex items-start sm:items-center gap-4">
+                        <div class="w-13 h-13 p-3 rounded-2xl bg-white/15 border border-white/25 flex items-center justify-center shrink-0">
+                            <i class="ph-duotone ph-graduation-cap text-3xl text-white"></i>
+                        </div>
+                        <div>
+                            <span class="px-2.5 py-0.5 rounded-md bg-white/20 text-white text-[11px] font-extrabold uppercase tracking-wider">Plataforma Oficial</span>
+                            <h3 class="font-display font-extrabold text-lg sm:text-xl mt-1">
+                                Campus Virtual de Educación Digital · Tierra del Fuego
+                            </h3>
+                            <p class="text-xs sm:text-sm text-blue-100 mt-0.5">
+                                Ingresá a las aulas virtuales, cursos activos y materiales complementarios de formación docente continua.
+                            </p>
+                        </div>
+                    </div>
+                    <a href="https://educaciondigital.tierradelfuego.edu.ar/campusvirtual/login/index.php" target="_blank" rel="noopener noreferrer" class="shrink-0 inline-flex items-center gap-2 bg-white hover:bg-tdf-cream text-tdf-data font-extrabold text-sm px-6 py-3.5 rounded-2xl shadow-sm transition-all">
+                        <span>Ir al Campus Virtual</span>
+                        <i class="ph-bold ph-arrow-up-right text-base"></i>
+                    </a>
+                </div>
+
+                
+                <div class="hover-accent-red mb-8 rounded-3xl bg-white border-2 border-amber-900/15 p-6 sm:p-8 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 shadow-sm">
+                    <div class="flex items-start gap-4">
+                        <div class="w-14 h-14 rounded-2xl bg-tdf-dark text-white flex items-center justify-center shrink-0">
+                            <i class="ph-duotone ph-presentation-chart text-3xl text-amber-400"></i>
+                        </div>
+                        <div>
+                            <span class="px-2.5 py-0.5 rounded-md bg-amber-200/80 text-tdf-dark text-[11px] font-extrabold uppercase">Guía Oficial</span>
+                            <h3 class="font-display font-extrabold text-xl text-tdf-dark mt-1">
+                                Guía de Pitch: Cómo defender tu investigación en 5 minutos
+                            </h3>
+                            <p class="text-sm text-neutral-600 mt-1 max-w-2xl">
+                                Estructura paso a paso y checklist previo para presentar los proyectos en Fábrica de Talentos e I.P.R.A.
+                            </p>
+                        </div>
+                    </div>
+                    <button onclick="openPitchGuideModal()" class="shrink-0 inline-flex items-center gap-2 bg-tdf-dark hover:bg-tdf-game text-white font-bold text-sm px-5 py-3.5 rounded-2xl transition-all cursor-pointer">
+                        <i class="ph-bold ph-eye text-lg"></i>
+                        <span>Explorar Guía</span>
+                    </button>
+                </div>
+
+                <div id="resources-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+            </div>
+        </section>
+
+        
+        <section id="contacto" class="py-16 bg-white border-t border-neutral-200/80">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+                    <div class="lg:col-span-5 bg-tdf-cream/70 rounded-[2rem] p-7 sm:p-9 border border-amber-900/10 flex flex-col justify-between space-y-6">
+                        <div>
+                            <span class="text-xs font-extrabold uppercase tracking-widest text-tdf-data block mb-2">Canales Oficiales</span>
+                            <h3 class="font-display font-extrabold text-2xl text-tdf-dark">Agencia de Innovación Fueguina</h3>
+                            <p class="text-sm text-neutral-600 mt-2">
+                                Comunicate con nuestro equipo territorial o seguí las novedades de todas las escuelas en nuestro Instagram oficial.
+                            </p>
+
+                            <div class="mt-6 space-y-3">
+                                <a href="https://www.instagram.com/aif.tdf/" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-4 rounded-2xl bg-white border border-neutral-200 hover:border-pink-500 transition-all">
+                                    <div class="flex items-center gap-3">
+                                        <i class="ph-fill ph-instagram-logo text-2xl text-pink-600"></i>
+                                        <div>
+                                            <span class="font-display font-bold text-sm text-tdf-dark block">@aif.tdf</span>
+                                            <span class="text-xs text-neutral-500">Instagram Oficial Agencia de Innovación</span>
+                                        </div>
+                                    </div>
+                                    <i class="ph-bold ph-arrow-up-right text-neutral-400"></i>
+                                </a>
+
+                                <div class="p-4 rounded-2xl bg-white border border-neutral-200 flex items-center justify-between gap-2">
+                                    <div>
+                                        <span class="text-[11px] font-bold uppercase text-neutral-400 block">Buzón Institucional</span>
+                                        <span class="font-display font-bold text-sm text-tdf-dark">rutaspedagogicas@aif.gob.ar</span>
+                                    </div>
+                                    <button onclick="copyOfficialEmail()" class="p-2 rounded-xl bg-neutral-100 hover:bg-neutral-200 text-tdf-dark cursor-pointer" title="Copiar correo">
+                                        <i class="ph-bold ph-copy"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="space-y-2 pt-4 border-t border-amber-900/10 text-xs text-neutral-600">
+                            <p><strong>Sede Ushuaia:</strong> Fábrica de Talentos · Av. Maipú 1255</p>
+                            <p><strong>Sede Río Grande:</strong> I.P.R.A. · Perito Moreno 168</p>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-7 bg-white rounded-[2rem] p-7 sm:p-9 shadow-card border border-neutral-200/80">
+                        <h3 class="font-display font-extrabold text-xl text-tdf-dark mb-1">Formulario de Vinculación Educativa</h3>
+                        <p class="text-xs sm:text-sm text-neutral-500 mb-6">Completá los datos para sumar tu institución o consultar al equipo pedagógico.</p>
+
+                        <form onsubmit="handleContactSubmit(event)" class="space-y-4">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <input type="text" id="contact-name" required placeholder="Nombre y Apellido *" class="w-full px-4 py-3 rounded-xl bg-neutral-50 border border-neutral-200 text-sm focus:outline-none focus:border-tdf-data">
+                                <select required class="w-full px-4 py-3 rounded-xl bg-neutral-50 border border-neutral-200 text-sm focus:outline-none focus:border-tdf-data">
+                                    <option value="Ushuaia">Ciudad: Ushuaia</option>
+                                    <option value="Tolhuin">Ciudad: Tolhuin</option>
+                                    <option value="Río Grande">Ciudad: Río Grande</option>
+                                </select>
+                            </div>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <input type="email" required placeholder="Correo electrónico *" class="w-full px-4 py-3 rounded-xl bg-neutral-50 border border-neutral-200 text-sm focus:outline-none focus:border-tdf-data">
+                                <input type="text" required placeholder="Escuela / Institución *" class="w-full px-4 py-3 rounded-xl bg-neutral-50 border border-neutral-200 text-sm focus:outline-none focus:border-tdf-data">
+                            </div>
+                            <textarea rows="3" required placeholder="Consulta o propuesta pedagógica *" class="w-full px-4 py-3 rounded-xl bg-neutral-50 border border-neutral-200 text-sm focus:outline-none focus:border-tdf-data"></textarea>
+                            <button type="submit" class="inline-flex items-center gap-2 bg-tdf-dark hover:bg-neutral-800 text-white font-bold text-sm px-7 py-3.5 rounded-2xl transition-all cursor-pointer">
+                                <i class="ph-bold ph-paper-plane-tilt"></i>
+                                <span>Enviar Consulta</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        
+        <section aria-label="Redes sociales y sitios oficiales" class="py-12 sm:py-14 bg-white border-t border-neutral-200/80">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h3 class="font-display font-extrabold text-xs sm:text-sm uppercase tracking-widest text-slate-600 mb-7">
+                    ¡SEGUINOS EN NUESTRAS REDES!
+                </h3>
+
+                <div class="flex flex-wrap items-center justify-center gap-3.5 sm:gap-4">
+                    
+                    <a href="https://www.facebook.com/aif.tdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-2xl bg-[#FDF6F0] hover:bg-[#FCECE0] border border-neutral-200/90 hover:border-orange-300 text-slate-700 font-display font-bold text-sm shadow-2xs hover:shadow-sm transition-all hover:-translate-y-0.5">
+                        <i class="ph-fill ph-facebook-logo text-xl text-[#F97316]"></i>
+                        <span>@aif.tdf</span>
+                    </a>
+
+                    
+                    <a href="https://www.instagram.com/aif.tdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-2xl bg-[#FDF6F0] hover:bg-[#FCECE0] border border-neutral-200/90 hover:border-orange-300 text-slate-700 font-display font-bold text-sm shadow-2xs hover:shadow-sm transition-all hover:-translate-y-0.5">
+                        <i class="ph-bold ph-instagram-logo text-xl text-[#F97316]"></i>
+                        <span>@aif.tdf</span>
+                    </a>
+
+                    
+                    <a href="https://www.tiktok.com/@conocimientotdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-2xl bg-[#FDF6F0] hover:bg-[#FCECE0] border border-neutral-200/90 hover:border-orange-300 text-slate-700 font-display font-bold text-sm shadow-2xs hover:shadow-sm transition-all hover:-translate-y-0.5">
+                        <i class="ph-fill ph-tiktok-logo text-xl text-[#F97316]"></i>
+                        <span>@conocimientotdf</span>
+                    </a>
+
+                    
+                    <a href="https://polos.aif.gob.ar/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-2xl bg-[#FDF6F0] hover:bg-[#FCECE0] border border-neutral-200/90 hover:border-orange-300 text-slate-700 font-display font-bold text-sm shadow-2xs hover:shadow-sm transition-all hover:-translate-y-0.5">
+                        <i class="ph ph-globe text-xl text-[#F97316]"></i>
+                        <span>Polos Creativos</span>
+                    </a>
+
+                    
+                    <a href="https://www.aif.gob.ar/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-2xl bg-[#FDF6F0] hover:bg-[#FCECE0] border border-neutral-200/90 hover:border-orange-300 text-slate-700 font-display font-bold text-sm shadow-2xs hover:shadow-sm transition-all hover:-translate-y-0.5">
+                        <i class="ph ph-globe text-xl text-[#F97316]"></i>
+                        <span>Sitio Web AIF</span>
+                    </a>
+
+                    
+                    <a href="https://educaciondigital.tierradelfuego.edu.ar/campusvirtual/login/index.php" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-2xl bg-[#FDF6F0] hover:bg-[#FCECE0] border border-neutral-200/90 hover:border-orange-300 text-slate-700 font-display font-bold text-sm shadow-2xs hover:shadow-sm transition-all hover:-translate-y-0.5">
+                        <i class="ph-bold ph-graduation-cap text-xl text-[#F97316]"></i>
+                        <span>Campus Virtual TDF</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    
+    <footer class="bg-tdf-dark text-white py-10 border-t border-neutral-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-neutral-400">
+            <div class="flex items-center gap-3">
+                <span class="font-display font-extrabold text-white text-sm">RUTAS PEDAGÓGICAS</span>
+                <span>· Agencia de Innovación Fueguina · Gobierno de Tierra del Fuego</span>
+            </div>
+            <a href="https://www.instagram.com/aif.tdf/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-white hover:text-pink-400 font-semibold">
+                <i class="ph-bold ph-instagram-logo text-base"></i>
+                <span>@aif.tdf</span>
+            </a>
+        </div>
+    </footer>
+
+    
+    
+    <div id="route-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/60 backdrop-blur-xs p-4" role="dialog" aria-modal="true">
+        <div class="bg-white rounded-[2rem] max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-neutral-200">
+            <div id="route-modal-header" class="p-6 sm:p-8 text-white flex items-start justify-between">
+                <div>
+                    <span id="route-modal-badge" class="text-xs font-extrabold uppercase tracking-wider bg-white/20 px-3 py-1 rounded-full"></span>
+                    <h3 id="route-modal-title" class="font-display font-extrabold text-2xl sm:text-3xl mt-3"></h3>
+                </div>
+                <button onclick="closeModal('route-modal')" class="p-2 rounded-xl bg-white/15 hover:bg-white/25 text-white cursor-pointer" aria-label="Cerrar">
+                    <i class="ph-bold ph-x text-xl"></i>
+                </button>
+            </div>
+            <div id="route-modal-body" class="p-6 sm:p-8 space-y-6"></div>
+        </div>
+    </div>
+
+    
+    <div id="pitch-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/60 backdrop-blur-xs p-4" role="dialog" aria-modal="true">
+        <div class="bg-white rounded-[2rem] max-w-3xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-neutral-200">
+            <div class="bg-tdf-dark p-6 sm:p-8 text-white flex items-start justify-between">
+                <div>
+                    <span class="text-xs font-extrabold uppercase tracking-wider text-amber-400">Documento Metodológico</span>
+                    <h3 class="font-display font-extrabold text-2xl mt-1">Guía para defender tu investigación (Pitch 5 Minutos)</h3>
+                </div>
+                <button onclick="closeModal('pitch-modal')" class="p-2 rounded-xl bg-white/10 hover:bg-white/20 text-white cursor-pointer" aria-label="Cerrar">
+                    <i class="ph-bold ph-x text-xl"></i>
+                </button>
+            </div>
+            <div class="p-6 sm:p-8 space-y-5">
+                <div class="grid grid-cols-1 sm:grid-cols-5 gap-2.5">
+                    <div class="p-3.5 rounded-2xl bg-tdf-gameLight border border-tdf-game/20">
+                        <span class="text-[10px] font-extrabold uppercase text-tdf-game block">1 Minuto</span>
+                        <h4 class="font-display font-bold text-sm text-tdf-dark mt-0.5">1. Problema</h4>
+                        <p class="text-xs text-neutral-600 mt-1">“Esto afecta a… y ocurre en…”</p>
+                    </div>
+                    <div class="p-3.5 rounded-2xl bg-tdf-dataLight border border-tdf-data/20">
+                        <span class="text-[10px] font-extrabold uppercase text-tdf-data block">1 Minuto</span>
+                        <h4 class="font-display font-bold text-sm text-tdf-dark mt-0.5">2. Solución</h4>
+                        <p class="text-xs text-neutral-600 mt-1">“Proponemos… porque…”</p>
+                    </div>
+                    <div class="p-3.5 rounded-2xl bg-tdf-bioLight border border-tdf-bio/20">
+                        <span class="text-[10px] font-extrabold uppercase text-tdf-bio block">1 Minuto</span>
+                        <h4 class="font-display font-bold text-sm text-tdf-dark mt-0.5">3. Producto</h4>
+                        <p class="text-xs text-neutral-600 mt-1">“Les mostramos cómo funciona…”</p>
+                    </div>
+                    <div class="p-3.5 rounded-2xl bg-amber-50 border border-amber-200">
+                        <span class="text-[10px] font-extrabold uppercase text-amber-700 block">1 Minuto</span>
+                        <h4 class="font-display font-bold text-sm text-tdf-dark mt-0.5">4. Viabilidad</h4>
+                        <p class="text-xs text-neutral-600 mt-1">“En TDF se aplica porque…”</p>
+                    </div>
+                    <div class="p-3.5 rounded-2xl bg-neutral-100 border border-neutral-200">
+                        <span class="text-[10px] font-extrabold uppercase text-neutral-700 block">1 Minuto</span>
+                        <h4 class="font-display font-bold text-sm text-tdf-dark mt-0.5">5. Impacto</h4>
+                        <p class="text-xs text-neutral-600 mt-1">“Con esto mejora… y se mide con…”</p>
+                    </div>
+                </div>
+                <div class="flex justify-end">
+                    <button onclick="downloadPitchText()" class="inline-flex items-center gap-2 bg-tdf-dark text-white text-xs font-bold px-5 py-3 rounded-xl hover:bg-neutral-800 cursor-pointer">
+                        <i class="ph-bold ph-download-simple"></i>
+                        <span>Descargar Ficha (.txt)</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <div id="cms-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/60 backdrop-blur-xs p-4" role="dialog" aria-modal="true">
+        <div class="bg-white rounded-[2rem] max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-neutral-200">
+            <div class="bg-tdf-data p-6 text-white flex items-start justify-between">
+                <div>
+                    <span class="text-xs font-extrabold uppercase tracking-wider bg-white/20 px-3 py-1 rounded-full">Panel de Gestión</span>
+                    <h3 class="font-display font-extrabold text-xl sm:text-2xl mt-2">Agregar Escuelas o Video de Instagram</h3>
+                </div>
+                <button onclick="closeModal('cms-modal')" class="p-2 rounded-xl bg-white/15 hover:bg-white/25 text-white cursor-pointer" aria-label="Cerrar">
+                    <i class="ph-bold ph-x text-xl"></i>
+                </button>
+            </div>
+            
+            <div class="p-6 space-y-6">
+                
+                <div class="border border-neutral-200 rounded-2xl p-4 space-y-3">
+                    <h4 class="font-display font-bold text-sm text-tdf-dark flex items-center gap-2">
+                        <i class="ph-bold ph-buildings text-tdf-bio"></i>
+                        <span>1. Agregar Escuela a Ushuaia, Tolhuin o Río Grande</span>
+                    </h4>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <input type="text" id="cms-school-name" placeholder="Nombre de la Institución" class="px-3 py-2 rounded-xl border border-neutral-200 text-sm">
+                        <select id="cms-school-city" class="px-3 py-2 rounded-xl border border-neutral-200 text-sm">
+                            <option value="Ushuaia">Escuelas Ushuaia</option>
+                            <option value="Tolhuin">Escuelas Tolhuin</option>
+                            <option value="Río Grande">Escuelas Río Grande</option>
+                        </select>
+                        <select id="cms-school-level" class="px-3 py-2 rounded-xl border border-neutral-200 text-sm">
+                            <option value="Inicial">Nivel Inicial</option>
+                            <option value="Primario">Nivel Primario</option>
+                            <option value="Secundario">Nivel Secundario</option>
+                        </select>
+                        <select id="cms-school-route" class="px-3 py-2 rounded-xl border border-neutral-200 text-sm">
+                            <option value="Biotecnología y Bioeconomía">Biotecnología y Bioeconomía</option>
+                            <option value="Ciencia de Datos e IA">Ciencia de Datos e IA</option>
+                            <option value="Industria del Videojuego">Industria del Videojuego</option>
+                        </select>
+                    </div>
+                    <input type="text" id="cms-school-teachers" placeholder="Docentes participantes (opcional)" class="w-full px-3 py-2 rounded-xl border border-neutral-200 text-sm">
+                    <button onclick="addCMSSchool()" class="bg-tdf-bio hover:bg-emerald-700 text-white text-xs font-bold px-4 py-2.5 rounded-xl transition-colors cursor-pointer">
+                        Agregar Escuela
+                    </button>
+                </div>
+
+                
+                <div class="border border-neutral-200 rounded-2xl p-4 space-y-3">
+                    <h4 class="font-display font-bold text-sm text-tdf-dark flex items-center gap-2">
+                        <i class="ph-bold ph-instagram-logo text-pink-600"></i>
+                        <span>2. Configurar Video Docente de Instagram (@aif.tdf)</span>
+                    </h4>
+                    <input type="text" id="cms-ig-title" placeholder="Título del testimonio (Ej. Prof. habla sobre Robótica en Río Grande)" class="w-full px-3 py-2 rounded-xl border border-neutral-200 text-sm">
+                    <input type="url" id="cms-ig-url" value="https://www.instagram.com/aif.tdf/" placeholder="https://www.instagram.com/reel/..." class="w-full px-3 py-2 rounded-xl border border-neutral-200 text-sm">
+                    <button onclick="applyCMSInstagram()" class="bg-pink-600 hover:bg-pink-700 text-white text-xs font-bold px-4 py-2.5 rounded-xl transition-colors cursor-pointer">
+                        Actualizar Video Instagram
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <div id="hero-db-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/60 backdrop-blur-xs p-4" role="dialog" aria-modal="true">
+        <div class="bg-white rounded-[2rem] max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-neutral-200">
+            <div class="bg-tdf-dark p-6 text-white flex items-start justify-between">
+                <div>
+                    <span class="text-xs font-extrabold uppercase tracking-wider text-amber-400">Base de Datos Visual · Portada</span>
+                    <h3 class="font-display font-extrabold text-xl sm:text-2xl mt-1">Imágenes del Carrusel Principal (<span id="hero-db-count">3</span>)</h3>
+                    <p class="text-xs text-neutral-300 mt-1">Subí fotos desde tu dispositivo o agregá enlaces para que roten automáticamente en el inicio.</p>
+                </div>
+                <button onclick="closeModal('hero-db-modal')" class="p-2 rounded-xl bg-white/10 hover:bg-white/20 text-white cursor-pointer" aria-label="Cerrar">
+                    <i class="ph-bold ph-x text-xl"></i>
+                </button>
+            </div>
+            
+            <div class="p-6 space-y-5">
+                <div class="bg-tdf-cream/60 border border-amber-900/10 rounded-2xl p-4 space-y-3">
+                    <h4 class="font-display font-bold text-sm text-tdf-dark">Añadir nueva imagen a la base de datos</h4>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <input type="text" id="hero-new-title" placeholder="Epígrafe / Ciudad (Ej. Encuentro en Río Grande)" class="px-3.5 py-2.5 rounded-xl bg-white border border-neutral-200 text-sm">
+                        <label class="flex items-center justify-center gap-2 px-3.5 py-2.5 rounded-xl bg-tdf-data hover:bg-blue-700 text-white text-xs font-bold cursor-pointer transition-colors">
+                            <i class="ph-bold ph-upload-simple text-base"></i>
+                            <span>Subir Foto(s) desde Dispositivo</span>
+                            <input type="file" id="hero-new-file" accept="image/*" multiple class="hidden" onchange="addHeroImageFromFile(event)">
+                        </label>
+                    </div>
+                    <div class="flex gap-2">
+                        <input type="url" id="hero-new-url" placeholder="O pegá una URL de imagen (https://...)" class="flex-1 px-3.5 py-2 rounded-xl bg-white border border-neutral-200 text-sm">
+                        <button onclick="addHeroImageFromUrl()" class="px-4 py-2 rounded-xl bg-tdf-dark hover:bg-neutral-800 text-white text-xs font-bold cursor-pointer">
+                            Agregar URL
+                        </button>
+                    </div>
+                </div>
+
+                <div id="hero-db-list" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
+            </div>
+        </div>
+    </div>
+
+    
+    <script>
+        const CMS_STORE = {
+            
+            heroCarouselDB: [
+                {
+                    id: "hero-1",
+                    title: "Presentación de Videojuegos · Escuelas de Tierra del Fuego",
+                    imageUrl: null,
+                    fallbackTheme: "game"
+                },
+                {
+                    id: "hero-2",
+                    title: "Estudiantes Programando en Rutas Pedagógicas",
+                    imageUrl: null,
+                    fallbackTheme: "data"
+                },
+                {
+                    id: "hero-3",
+                    title: "Exposición de Ciencia de Datos e IA · Agencia de Innovación",
+                    imageUrl: null,
+                    fallbackTheme: "bio"
+                }
+            ],
+
+            
+            metrics: [
+                {
+                    id: "rutas",
+                    prefix: "",
+                    value: 7,
+                    label: "Rutas registradas",
+                    sublabel: "3 en Ushuaia · 1 en Tolhuin · 3 en Río Grande · En expansión",
+                    icon: "ph-map-pin-line",
+                    color: "text-amber-700",
+                    bg: "bg-amber-100/80",
+                    hoverAccent: "hover-accent-red"
+                },
+                {
+                    id: "docentes",
+                    prefix: "",
+                    value: 56,
+                    label: "Docentes en capacitación",
+                    sublabel: "14 en Ushuaia · 6 en Tolhuin · 36 en Río Grande · Formación continua",
+                    icon: "ph-chalkboard-teacher",
+                    color: "text-tdf-data",
+                    bg: "bg-tdf-dataLight",
+                    hoverAccent: "hover-accent-blue"
+                },
+                {
+                    id: "estudiantes",
+                    prefix: "",
+                    value: 364,
+                    label: "Estudiantes protagonistas",
+                    sublabel: "52 en Ushuaia · 51 en Tolhuin · 261 en Río Grande · Talleres activos",
+                    icon: "ph-student",
+                    color: "text-tdf-game",
+                    bg: "bg-tdf-gameLight",
+                    hoverAccent: "hover-accent-red"
+                },
+                {
+                    id: "total",
+                    prefix: "",
+                    value: 420,
+                    label: "Total participantes",
+                    sublabel: "Cifras en actualización permanente en toda la provincia",
+                    icon: "ph-users-four",
+                    color: "text-tdf-bio",
+                    bg: "bg-tdf-bioLight",
+                    hoverAccent: "hover-accent-green"
+                }
+            ],
+
+            
+            cityStats: [
+                { city: "Ushuaia", routes: 3, teachers: 14, students: 52, total: 66, dot: "bg-tdf-game" },
+                { city: "Tolhuin", routes: 1, teachers: 6, students: 51, total: 57, dot: "bg-tdf-bio" },
+                { city: "Río Grande", routes: 3, teachers: 36, students: 261, total: 297, dot: "bg-tdf-data" }
+            ],
+
+            
+            schools: [
+                
+                { name: "Colegio Provincial Kloketén", city: "Ushuaia", level: "Secundario", route: "Ciencia de Datos e IA", teachers: ["Equipo Docente Ushuaia · Ruta 1"] },
+                { name: "Escuela Provincial N° 1 Domingo Faustino Sarmiento", city: "Ushuaia", level: "Primario", route: "Biotecnología y Bioeconomía", teachers: ["Equipo Docente Ushuaia · Ruta 2"] },
+                { name: "Colegio Técnico Provincial Olga B. de Arko", city: "Ushuaia", level: "Secundario", route: "Industria del Videojuego", teachers: ["Equipo Docente Ushuaia · Ruta 3"] },
+
+                
+                { name: "Colegio Provincial Ramón Alberto Trejo Noel", city: "Tolhuin", level: "Secundario", route: "Biotecnología y Bioeconomía", teachers: ["Equipo Docente Tolhuin · Ruta 1"] },
+
+                
+                { name: "Colegio Provincial Dr. Ernesto Guevara", city: "Río Grande", level: "Secundario", route: "Industria del Videojuego", teachers: ["Equipo Docente Río Grande · Ruta 1"] },
+                { name: "Escuela Provincial N° 2 Dr. Benjamín Zorrilla", city: "Río Grande", level: "Primario", route: "Ciencia de Datos e IA", teachers: ["Equipo Docente Río Grande · Ruta 2"] },
+                { name: "Escuela Provincial N° 21 Provincias Unidas", city: "Río Grande", level: "Primario", route: "Biotecnología y Bioeconomía", teachers: ["Equipo Docente Río Grande · Ruta 3"] }
+            ],
+
+            
+            galleryItems: [
+                {
+                    id: "ai-1",
+                    type: "ai",
+                    badge: "Ilustración IA · Ruta Verde",
+                    title: "Laboratorio de Biotecnología Austral",
+                    caption: "Representación conceptual generada por IA sobre exploración científica de turberas y ecosistemas fueguinos.",
+                    theme: "bio"
+                },
+                {
+                    id: "ai-2",
+                    type: "ai",
+                    badge: "Ilustración IA · Ruta Azul",
+                    title: "Ciencia de Datos e IA en el Fin del Mundo",
+                    caption: "Visualización generada por IA sobre análisis de datos climáticos y aprendizaje automático en aulas de TDF.",
+                    theme: "data"
+                },
+                {
+                    id: "ai-3",
+                    type: "ai",
+                    badge: "Ilustración IA · Ruta Rojo",
+                    title: "Creación de Videojuegos Fueguinos",
+                    caption: "Arte conceptual generado por IA sobre diseño interactivo y narrativa digital con identidad provincial.",
+                    theme: "game"
+                },
+                {
+                    id: "user-1",
+                    type: "user",
+                    badge: "Espacio Foto · Ushuaia",
+                    title: "Jornada en Escuelas de Ushuaia",
+                    caption: "Hacé clic para adjuntar una fotografía real de los estudiantes o docentes trabajando en Ushuaia.",
+                    imageUrl: null
+                },
+                {
+                    id: "user-2",
+                    type: "user",
+                    badge: "Espacio Foto · Tolhuin",
+                    title: "Encuentro en Escuelas de Tolhuin",
+                    caption: "Hacé clic para adjuntar una fotografía real de la ruta pedagógica en el corazón de la isla.",
+                    imageUrl: null
+                },
+                {
+                    id: "user-3",
+                    type: "user",
+                    badge: "Espacio Foto · Río Grande",
+                    title: "Presentación en Escuelas de Río Grande",
+                    caption: "Hacé clic para adjuntar una fotografía real de los talleres y exposiciones en Río Grande.",
+                    imageUrl: null
+                }
+            ],
+
+            testimonials: [
+                {
+                    id: 1,
+                    category: "docente",
+                    role: "Directiva · Ushuaia",
+                    author: "Prof. Marta Villarroel",
+                    route: "Biotecnología y Bioeconomía",
+                    routeColor: "text-tdf-bio bg-tdf-bioLight",
+                    quote: "Rutas Pedagógicas nos dio un marco ordenado y riguroso para que docentes con años de trayectoria nos animemos a experimentar con biotecnología aplicada al entorno fueguino."
+                },
+                {
+                    id: 2,
+                    category: "docente",
+                    role: "Docente · Río Grande",
+                    author: "Prof. Carlos Oyarzún",
+                    route: "Ciencia de Datos e IA",
+                    routeColor: "text-tdf-data bg-tdf-dataLight",
+                    quote: "Con 36 docentes y más de 260 estudiantes participando en Río Grande, logramos que los chicos analicen datos reales de nuestra ciudad y los defiendan con orgullo."
+                },
+                {
+                    id: 3,
+                    category: "estudiante",
+                    role: "Estudiante · Tolhuin",
+                    author: "Valentina Ríos",
+                    route: "Industria del Videojuego",
+                    routeColor: "text-tdf-game bg-tdf-gameLight",
+                    quote: "Trabajar en equipo desde nuestra escuela en Tolhuin y compartir proyectos con chicos de toda la provincia fue una experiencia única que nos motiva a seguir creando."
+                }
+            ],
+
+            routesDetail: {
+                videojuegos: {
+                    title: "Industria del Videojuego",
+                    badge: "Ruta 01 · Creatividad y Lógica",
+                    headerClass: "bg-tdf-game",
+                    levels: [
+                        { level: "Nivel Inicial", desc: "Pensamiento computacional desenchufado, secuencias lógicas mediante juego corporal y creación de historias interactivas ilustradas." },
+                        { level: "Nivel Primario", desc: "Programación por bloques (Scratch), diseño de personajes inspirados en la fauna fueguina y mecánicas básicas de puntaje y niveles." },
+                        { level: "Nivel Secundario", desc: "Diseño de videojuegos 2D/3D, narrativa transmedia, arte pixel/vectorial, sonido y prototipado funcional con defensa en formato Pitch." }
+                    ]
+                },
+                datos: {
+                    title: "Ciencia de Datos e Inteligencia Artificial",
+                    badge: "Ruta 02 · Pensamiento Crítico y Ética",
+                    headerClass: "bg-tdf-data",
+                    levels: [
+                        { level: "Nivel Inicial", desc: "Clasificación de objetos, reconocimiento de patrones visuales y comprensión temprana de cómo aprenden las máquinas a través del juego." },
+                        { level: "Nivel Primario", desc: "Recolección de datos del entorno escolar, gráficos visuales simples y entrenamiento de modelos de reconocimiento de imágenes y sonidos." },
+                        { level: "Nivel Secundario", desc: "Análisis de datasets reales de Tierra del Fuego (clima, energía, turismo), programación inicial en Python, visualización y debate ético sobre IA." }
+                    ]
+                },
+                biotecnologia: {
+                    title: "Biotecnología y Bioeconomía",
+                    badge: "Ruta 03 · Ciencia y Sostenibilidad",
+                    headerClass: "bg-tdf-bio",
+                    levels: [
+                        { level: "Nivel Inicial", desc: "Exploración sensorial de la naturaleza fueguina, germinación, observación con lupas y cuidado de los ecosistemas locales." },
+                        { level: "Nivel Primario", desc: "Experimentos de microbiología cotidiana (levaduras, compostaje), ciclos de la materia y aprovechamiento responsable de recursos naturales." },
+                        { level: "Nivel Secundario", desc: "Biotecnología aplicada a turberas, algas y bosques subantárticos; desarrollo de bioinsumos y proyectos de economía circular provincial." }
+                    ]
+                }
+            },
+
+            resources: [
+                {
+                    title: "Manual Docente: Introducción a la Biotecnología Fueguina",
+                    level: "Primario",
+                    route: "Biotecnología",
+                    color: "text-tdf-bio bg-tdf-bioLight",
+                    type: "Manual PDF · 42 págs.",
+                    desc: "Secuencias experimentales seguras para realizar en el aula con recursos locales."
+                },
+                {
+                    title: "Cuadernillo de Ciencia de Datos e IA Ética en el Aula",
+                    level: "Secundario",
+                    route: "Ciencia de Datos",
+                    color: "text-tdf-data bg-tdf-dataLight",
+                    type: "Guía Metodológica · 56 págs.",
+                    desc: "Actividades prácticas con datasets provinciales y talleres de pensamiento crítico."
+                },
+                {
+                    title: "Taller de Diseño Narrativo y Videojuegos Desenchufados",
+                    level: "Inicial",
+                    route: "Videojuegos",
+                    color: "text-tdf-game bg-tdf-gameLight",
+                    type: "Kit Didáctico · Imprimible",
+                    desc: "Tarjetas de secuencias lógicas y dinámicas lúdicas sin necesidad de pantallas."
+                },
+                {
+                    title: "Plantilla de Planificación Interdisciplinaria por Rutas",
+                    level: "Secundario",
+                    route: "Transversal",
+                    color: "text-tdf-dark bg-neutral-100",
+                    type: "Plantilla Editable",
+                    desc: "Matriz para articular espacios curriculares y evaluar competencias digitales."
+                },
+                {
+                    title: "Primeros Pasos en Programación Creativa con Bloques",
+                    level: "Primario",
+                    route: "Videojuegos",
+                    color: "text-tdf-game bg-tdf-gameLight",
+                    type: "Guía Paso a Paso",
+                    desc: "Proyectos guiados para crear trivias y juegos sobre geografía de Tierra del Fuego."
+                },
+                {
+                    title: "Exploradores de la Naturaleza Austral: Bitácora Inicial",
+                    level: "Inicial",
+                    route: "Biotecnología",
+                    color: "text-tdf-bio bg-tdf-bioLight",
+                    type: "Cuaderno de Campo",
+                    desc: "Propuestas de indagación ambiental adaptadas a salas de 4 y 5 años."
+                }
+            ]
+        };
+
+        let activeCityTab = "all";
+        let currentHeroSlide = 0;
+        let heroCarouselTimer = null;
+
+        document.addEventListener("DOMContentLoaded", () => {
+            initHeroCarousel();
+            renderMetrics();
+            renderCityStatsTable();
+            renderCitySections();
+            renderGallery();
+            renderTestimonials("all");
+            renderResources("all");
+            initBackToTopButton();
+        });
+
+        
+
+        function initBackToTopButton() {
+            const btn = document.getElementById("back-to-top-btn");
+            if (!btn) return;
+            window.addEventListener("scroll", () => {
+                if (window.scrollY > 280) {
+                    btn.classList.remove("opacity-0", "translate-y-4", "pointer-events-none");
+                    btn.classList.add("opacity-100", "translate-y-0", "pointer-events-auto");
+                } else {
+                    btn.classList.add("opacity-0", "translate-y-4", "pointer-events-none");
+                    btn.classList.remove("opacity-100", "translate-y-0", "pointer-events-auto");
+                }
+            }, { passive: true });
+        }
+
+        function scrollToTopSmooth() {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+
+        
+
+        function getHeroBackdropSVG(theme) {
+            if (theme === "game") {
+                return `
+                    <svg viewBox="0 0 1440 700" class="w-full h-full object-cover" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="hGame" x1="0" y1="0" x2="1440" y2="700" gradientUnits="userSpaceOnUse">
+                                <stop offset="0%" stop-color="#1E293B"/>
+                                <stop offset="50%" stop-color="#9B2C2C"/>
+                                <stop offset="100%" stop-color="#E53E3E"/>
+                            </linearGradient>
+                        </defs>
+                        <rect width="1440" height="700" fill="url(#hGame)"/>
+                        <circle cx="1150" cy="180" r="240" fill="#FFFFFF" fill-opacity="0.08"/>
+                        <circle cx="280" cy="540" r="300" fill="#0056B3" fill-opacity="0.22"/>
+                        <path d="M-50 480 C 350 320, 880 620, 1500 380" stroke="#FFFFFF" stroke-width="18" stroke-opacity="0.14" stroke-dasharray="24 24" fill="none"/>
+                    </svg>
+                `;
+            }
+            if (theme === "data") {
+                return `
+                    <svg viewBox="0 0 1440 700" class="w-full h-full object-cover" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="hData" x1="0" y1="0" x2="1440" y2="700" gradientUnits="userSpaceOnUse">
+                                <stop offset="0%" stop-color="#0F172A"/>
+                                <stop offset="55%" stop-color="#0056B3"/>
+                                <stop offset="100%" stop-color="#38BDF8"/>
+                            </linearGradient>
+                        </defs>
+                        <rect width="1440" height="700" fill="url(#hData)"/>
+                        <g stroke="#FFFFFF" stroke-opacity="0.15" stroke-width="2">
+                            <circle cx="1050" cy="240" r="160" fill="none"/>
+                            <circle cx="1050" cy="240" r="260" fill="none"/>
+                            <line x1="200" y1="150" x2="1050" y2="240"/>
+                            <line x1="400" y1="580" x2="1050" y2="240"/>
+                        </g>
+                    </svg>
+                `;
+            }
+            return `
+                <svg viewBox="0 0 1440 700" class="w-full h-full object-cover" preserveAspectRatio="xMidYMid slice" xmlns="http:
+                    <defs>
+                        <linearGradient id="hBio" x1="0" y1="0" x2="1440" y2="700" gradientUnits="userSpaceOnUse">
+                            <stop offset="0%" stop-color="#143622"/>
+                            <stop offset="55%" stop-color="#38A169"/>
+                            <stop offset="100%" stop-color="#68D391"/>
+                        </linearGradient>
+                    </defs>
+                    <rect width="1440" height="700" fill="url(#hBio)"/>
+                    <polygon points="750,700 1050,220 1350,700" fill="#FFFFFF" fill-opacity="0.08"/>
+                    <polygon points="980,700 1260,290 1520,700" fill="#0F172A" fill-opacity="0.18"/>
+                </svg>
+            `;
+        }
+
+        function initHeroCarousel() {
+            renderHeroSlides();
+            startHeroAutoPlay();
+        }
+
+        function renderHeroSlides() {
+            const slidesContainer = document.getElementById("hero-carousel-slides");
+            const dotsContainer = document.getElementById("hero-carousel-dots");
+            const captionEl = document.getElementById("hero-slide-caption");
+            const list = CMS_STORE.heroCarouselDB;
+
+            if (list.length === 0) return;
+            if (currentHeroSlide >= list.length) currentHeroSlide = 0;
+
+            slidesContainer.innerHTML = list.map((slide, idx) => {
+                const isActive = idx === currentHeroSlide;
+                return `
+                    <div class="hero-slide absolute inset-0 ${isActive ? "active" : "inactive"}">
+                        ${slide.imageUrl
+                            ? `<img src="${slide.imageUrl}" alt="${slide.title}" class="w-full h-full object-cover">`
+                            : getHeroBackdropSVG(slide.fallbackTheme || "data")
+                        }
+                    </div>
+                `;
+            }).join("");
+
+            dotsContainer.innerHTML = list.map((_, idx) => `
+                <button onclick="goToHeroSlide(${idx})" class="h-2 rounded-full transition-all cursor-pointer ${
+                    idx === currentHeroSlide ? "w-7 bg-white" : "w-2 bg-white/45 hover:bg-white/75"
+                }" aria-label="Ir a diapositiva ${idx + 1}"></button>
+            `).join("");
+
+            if (captionEl) {
+                captionEl.textContent = list[currentHeroSlide].title;
+            }
+        }
+
+        function startHeroAutoPlay() {
+            if (heroCarouselTimer) clearInterval(heroCarouselTimer);
+            heroCarouselTimer = setInterval(() => {
+                nextHeroSlide(false);
+            }, 5000);
+        }
+
+        function nextHeroSlide(resetTimer = true) {
+            currentHeroSlide = (currentHeroSlide + 1) % CMS_STORE.heroCarouselDB.length;
+            renderHeroSlides();
+            if (resetTimer) startHeroAutoPlay();
+        }
+
+        function prevHeroSlide() {
+            currentHeroSlide = (currentHeroSlide - 1 + CMS_STORE.heroCarouselDB.length) % CMS_STORE.heroCarouselDB.length;
+            renderHeroSlides();
+            startHeroAutoPlay();
+        }
+
+        function goToHeroSlide(index) {
+            currentHeroSlide = index;
+            renderHeroSlides();
+            startHeroAutoPlay();
+        }
+
+        function openHeroDBModal() {
+            renderHeroDBList();
+            openModal("hero-db-modal");
+        }
+
+        function renderHeroDBList() {
+            const listEl = document.getElementById("hero-db-list");
+            const countEl = document.getElementById("hero-db-count");
+            countEl.textContent = CMS_STORE.heroCarouselDB.length;
+
+            listEl.innerHTML = CMS_STORE.heroCarouselDB.map((item, idx) => `
+                <div class="rounded-2xl border border-neutral-200 overflow-hidden bg-neutral-50 flex flex-col justify-between">
+                    <div class="h-28 relative overflow-hidden bg-tdf-dark">
+                        ${item.imageUrl
+                            ? `<img src="${item.imageUrl}" alt="${item.title}" class="w-full h-full object-cover">`
+                            : getHeroBackdropSVG(item.fallbackTheme || "data")
+                        }
+                        <span class="absolute top-2 left-2 px-2 py-0.5 rounded-md bg-black/70 text-white text-[10px] font-bold">
+                            Slide #${idx + 1}
+                        </span>
+                    </div>
+                    <div class="p-3 flex items-center justify-between gap-2 bg-white">
+                        <span class="text-xs font-bold text-tdf-dark truncate" title="${item.title}">${item.title}</span>
+                        ${CMS_STORE.heroCarouselDB.length > 1 ? `
+                            <button onclick="removeHeroSlide('${item.id}')" class="p-1.5 rounded-lg text-rose-600 hover:bg-rose-50 transition-colors cursor-pointer shrink-0" title="Eliminar imagen">
+                                <i class="ph-bold ph-trash"></i>
+                            </button>
+                        ` : ""}
+                    </div>
+                </div>
+            `).join("");
+        }
+
+        function addHeroImageFromFile(event) {
+            const files = Array.from(event.target.files || []);
+            if (files.length === 0) return;
+
+            const titleInput = document.getElementById("hero-new-title");
+            const customTitle = titleInput ? titleInput.value.trim() : "";
+            let loadedCount = 0;
+
+            files.forEach((file) => {
+                const title = customTitle || file.name.replace(/\.[^/.]+$/, "");
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    CMS_STORE.heroCarouselDB.push({
+                        id: "hero-" + Date.now() + "-" + Math.random().toString(36).slice(2, 6),
+                        title,
+                        imageUrl: e.target.result,
+                        fallbackTheme: "data"
+                    });
+                    loadedCount++;
+                    if (loadedCount === files.length) {
+                        if (titleInput) titleInput.value = "";
+                        event.target.value = "";
+                        currentHeroSlide = CMS_STORE.heroCarouselDB.length - 1;
+                        renderHeroSlides();
+                        if (document.getElementById("hero-db-list")) {
+                            renderHeroDBList();
+                        }
+                        startHeroAutoPlay();
+                        showToast(
+                            files.length === 1
+                                ? "Foto añadida al carrusel principal"
+                                : `${files.length} fotos añadidas al carrusel principal`,
+                            "success"
+                        );
+                    }
+                };
+                reader.readAsDataURL(file);
+            });
+        }
+
+        function addHeroImageFromUrl() {
+            const urlInput = document.getElementById("hero-new-url");
+            const titleInput = document.getElementById("hero-new-title");
+            const url = urlInput.value.trim();
+            if (!url) {
+                showToast("Ingresá una URL válida de imagen", "error");
+                return;
+            }
+            const title = titleInput.value.trim() || "Rutas Pedagógicas · Tierra del Fuego";
+            CMS_STORE.heroCarouselDB.push({
+                id: "hero-" + Date.now(),
+                title,
+                imageUrl: url,
+                fallbackTheme: "data"
+            });
+            urlInput.value = "";
+            titleInput.value = "";
+            currentHeroSlide = CMS_STORE.heroCarouselDB.length - 1;
+            renderHeroSlides();
+            renderHeroDBList();
+            startHeroAutoPlay();
+            showToast("Imagen por URL agregada al carrusel de portada", "success");
+        }
+
+        function removeHeroSlide(id) {
+            if (CMS_STORE.heroCarouselDB.length <= 1) return;
+            CMS_STORE.heroCarouselDB = CMS_STORE.heroCarouselDB.filter(item => item.id !== id);
+            currentHeroSlide = 0;
+            renderHeroSlides();
+            renderHeroDBList();
+            showToast("Imagen eliminada del carrusel", "info");
+        }
+
+        function renderMetrics() {
+            const container = document.getElementById("metrics-grid");
+            container.innerHTML = CMS_STORE.metrics.map(m => `
+                <div class="${m.hoverAccent || 'hover-accent-blue'} bg-white rounded-3xl p-6 border border-neutral-200/80 shadow-card transition-all group">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-12 h-12 rounded-2xl ${m.bg} ${m.color} flex items-center justify-center group-hover:scale-105 transition-transform">
+                            <i class="ph-duotone ${m.icon} text-2xl"></i>
+                        </div>
+                        <span class="inline-flex items-center gap-1 text-[11px] font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full">
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> En curso
+                        </span>
+                    </div>
+                    <div class="font-display font-extrabold text-3xl sm:text-4xl text-tdf-dark tracking-tight">
+                        ${m.prefix}${m.value.toLocaleString("es-AR")}
+                    </div>
+                    <h3 class="font-display font-bold text-base text-tdf-dark mt-1">${m.label}</h3>
+                    <p class="text-xs text-neutral-500 mt-1">${m.sublabel}</p>
+                </div>
+            `).join("");
+        }
+
+        function renderCityStatsTable() {
+            const tbody = document.getElementById("city-stats-tbody");
+            const rowsHtml = CMS_STORE.cityStats.map(row => `
+                <tr class="hover:bg-tdf-cream/40 transition-colors">
+                    <td class="py-3.5 px-5 font-display font-bold text-tdf-dark flex items-center gap-2.5">
+                        <span class="w-2.5 h-2.5 rounded-full ${row.dot}"></span>
+                        <span>${row.city}</span>
+                    </td>
+                    <td class="py-3.5 px-5 text-center font-semibold text-neutral-700">${row.routes}</td>
+                    <td class="py-3.5 px-5 text-center font-semibold text-neutral-700">${row.teachers}</td>
+                    <td class="py-3.5 px-5 text-center font-semibold text-neutral-700">${row.students}</td>
+                    <td class="py-3.5 px-5 text-center font-display font-extrabold text-tdf-dark">${row.total}</td>
+                </tr>
+            `).join("");
+
+            const totalRow = `
+                <tr class="bg-sky-50/90 border-t-2 border-tdf-dark/20 font-display font-extrabold text-tdf-dark">
+                    <td class="py-4 px-5 uppercase tracking-wide text-xs sm:text-sm">TOTAL PROVINCIAL</td>
+                    <td class="py-4 px-5 text-center text-base">7</td>
+                    <td class="py-4 px-5 text-center text-base">56</td>
+                    <td class="py-4 px-5 text-center text-base">364</td>
+                    <td class="py-4 px-5 text-center text-base text-tdf-data">420</td>
+                </tr>
+            `;
+
+            tbody.innerHTML = rowsHtml + totalRow;
+        }
+
+        function setCityTab(city, btnEl) {
+            activeCityTab = city;
+            document.querySelectorAll(".city-tab-btn").forEach(btn => {
+                btn.classList.remove("bg-tdf-dark", "text-white", "shadow-sm");
+                btn.classList.add("bg-white", "text-tdf-dark");
+            });
+            if (btnEl) {
+                btnEl.classList.remove("bg-white", "text-tdf-dark");
+                btnEl.classList.add("bg-tdf-dark", "text-white", "shadow-sm");
+            }
+            renderCitySections();
+        }
+
+        function renderCitySections() {
+            const container = document.getElementById("city-blocks-container");
+            const searchQuery = (document.getElementById("school-search")?.value || "").toLowerCase().trim();
+
+            const citiesConfig = [
+                {
+                    key: "Ushuaia",
+                    title: "Escuelas Ushuaia",
+                    subtitle: "Zona Sur · Sede Fábrica de Talentos",
+                    stats: "3 rutas registradas · 14 docentes · 52 estudiantes · 66 participantes",
+                    accentBorder: "border-tdf-game",
+                    accentBg: "bg-tdf-game",
+                    accentLight: "bg-tdf-gameLight text-tdf-game"
+                },
+                {
+                    key: "Tolhuin",
+                    title: "Escuelas Tolhuin",
+                    subtitle: "Zona Centro · Corazón de la Isla",
+                    stats: "1 ruta registrada · 6 docentes · 51 estudiantes · 57 participantes",
+                    accentBorder: "border-tdf-bio",
+                    accentBg: "bg-tdf-bio",
+                    accentLight: "bg-tdf-bioLight text-tdf-bio"
+                },
+                {
+                    key: "Río Grande",
+                    title: "Escuelas Río Grande",
+                    subtitle: "Zona Norte · Sede I.P.R.A.",
+                    stats: "3 rutas registradas · 36 docentes · 261 estudiantes · 297 participantes",
+                    accentBorder: "border-tdf-data",
+                    accentBg: "bg-tdf-data",
+                    accentLight: "bg-tdf-dataLight text-tdf-data"
+                }
+            ];
+
+            const visibleCities = activeCityTab === "all"
+                ? citiesConfig
+                : citiesConfig.filter(c => c.key === activeCityTab);
+
+            container.innerHTML = visibleCities.map(cityCfg => {
+                const citySchools = CMS_STORE.schools.filter(s => {
+                    const matchCity = s.city === cityCfg.key;
+                    const matchSearch = !searchQuery ||
+                        s.name.toLowerCase().includes(searchQuery) ||
+                        s.route.toLowerCase().includes(searchQuery) ||
+                        s.teachers.some(t => t.toLowerCase().includes(searchQuery));
+                    return matchCity && matchSearch;
+                });
+
+                return `
+                    <div class="bg-white rounded-[2rem] border-2 ${cityCfg.accentBorder}/25 shadow-card overflow-hidden">
+                        <!-- Encabezado de Ciudad -->
+                        <div class="p-6 sm:p-7 border-b border-neutral-100 flex flex-col lg:flex-row lg:items-center justify-between gap-4 bg-neutral-50/60">
+                            <div class="flex items-start sm:items-center gap-4">
+                                <div class="w-12 h-12 rounded-2xl ${cityCfg.accentBg} text-white flex items-center justify-center shrink-0 shadow-sm">
+                                    <i class="ph-bold ph-buildings text-2xl"></i>
+                                </div>
+                                <div>
+                                    <span class="text-[11px] font-extrabold uppercase tracking-wider text-neutral-500 block">${cityCfg.subtitle}</span>
+                                    <h3 class="font-display font-extrabold text-2xl text-tdf-dark">${cityCfg.title}</h3>
+                                </div>
+                            </div>
+
+                            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-xl ${cityCfg.accentLight} text-xs font-extrabold">
+                                <i class="ph-fill ph-users-three text-base"></i>
+                                <span>${cityCfg.stats}</span>
+                            </div>
+                        </div>
+
+                        <!-- Lista de Escuelas de esta Ciudad -->
+                        <div class="p-6 sm:p-7">
+                            ${citySchools.length === 0 ? `
+                                <p class="text-sm text-neutral-500 text-center py-4">No hay instituciones que coincidan con "${searchQuery}" en ${cityCfg.title}.</p>
+                            ` : `
+                                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                                    ${citySchools.map(s => {
+                                        let routeBadge = "bg-neutral-100 text-neutral-700";
+                                        let hoverCardClass = "hover-accent-blue";
+                                        if (s.route.includes("Biotecnología")) {
+                                            routeBadge = "bg-tdf-bioLight text-tdf-bio";
+                                            hoverCardClass = "hover-accent-green";
+                                        }
+                                        if (s.route.includes("Datos")) {
+                                            routeBadge = "bg-tdf-dataLight text-tdf-data";
+                                            hoverCardClass = "hover-accent-blue";
+                                        }
+                                        if (s.route.includes("Videojuego")) {
+                                            routeBadge = "bg-tdf-gameLight text-tdf-game";
+                                            hoverCardClass = "hover-accent-red";
+                                        }
+
+                                        return `
+                                            <div class="${hoverCardClass} rounded-2xl p-5 bg-neutral-50/70 hover:bg-white border border-neutral-200/80 transition-all flex flex-col justify-between space-y-4">
+                                                <div>
+                                                    <div class="flex items-center justify-between gap-2 mb-2.5">
+                                                        <span class="px-2.5 py-1 rounded-lg text-[11px] font-extrabold ${routeBadge}">
+                                                            ${s.route}
+                                                        </span>
+                                                        <span class="text-[11px] font-bold text-neutral-500">Nivel ${s.level}</span>
+                                                    </div>
+                                                    <h4 class="font-display font-bold text-base text-tdf-dark leading-snug">
+                                                        ${s.name}
+                                                    </h4>
+                                                </div>
+
+                                                <div class="pt-3 border-t border-neutral-200/60 flex flex-wrap gap-1.5">
+                                                    ${s.teachers.map(t => `
+                                                        <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-white border border-neutral-200 text-[11px] font-semibold text-neutral-700">
+                                                            <i class="ph-fill ph-chalkboard-teacher text-neutral-400"></i> ${t}
+                                                        </span>
+                                                    `).join("")}
+                                                </div>
+                                            </div>
+                                        `;
+                                    }).join("")}
+                                </div>
+                            `}
+                        </div>
+                    </div>
+                `;
+            }).join("");
+        }
+
+        function getAIIllustrationSVG(theme) {
+            if (theme === "bio") {
+                return `
+                    <svg viewBox="0 0 400 240" class="w-full h-full object-cover" xmlns="http:
+                        <defs>
+                            <radialGradient id="bio3dBg" cx="30%" cy="20%" r="85%">
+                                <stop offset="0%" stop-color="#68D391"/>
+                                <stop offset="45%" stop-color="#2F855A"/>
+                                <stop offset="100%" stop-color="#143622"/>
+                            </radialGradient>
+                            <linearGradient id="bioGlass3d" x1="0" y1="0" x2="1" y2="1">
+                                <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.72"/>
+                                <stop offset="50%" stop-color="#E6FFFA" stop-opacity="0.22"/>
+                                <stop offset="100%" stop-color="#0F291E" stop-opacity="0.45"/>
+                            </linearGradient>
+                            <linearGradient id="bioLiquid3d" x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="0%" stop-color="#81E6D9"/>
+                                <stop offset="50%" stop-color="#38B2AC"/>
+                                <stop offset="100%" stop-color="#1D4044"/>
+                            </linearGradient>
+                            <linearGradient id="bioLeaf3d" x1="0" y1="0" x2="1" y2="1">
+                                <stop offset="0%" stop-color="#F0FFF4"/>
+                                <stop offset="50%" stop-color="#68D391"/>
+                                <stop offset="100%" stop-color="#22543D"/>
+                            </linearGradient>
+                            <filter id="drop3dBio" x="-20%" y="-20%" width="140%" height="140%">
+                                <feDropShadow dx="0" dy="10" stdDeviation="7" flood-color="#0A1F14" flood-opacity="0.55"/>
+                            </filter>
+                        </defs>
+
+                        <rect width="400" height="240" fill="url(#bio3dBg)"/>
+                        <!-- Relieves montañosos 3D en planos de profundidad -->
+                        <path d="M-20 195 Q 95 135 215 185 T 420 155 L 420 250 L -20 250 Z" fill="#1C4532" opacity="0.75"/>
+                        <path d="M-20 212 Q 140 165 270 205 T 420 185 L 420 250 L -20 250 Z" fill="#0F291E" opacity="0.9"/>
+
+                        <!-- Esferas 3D flotantes con brillo especular -->
+                        <g filter="url(#drop3dBio)">
+                            <circle cx="82" cy="64" r="24" fill="url(#bioLiquid3d)"/>
+                            <ellipse cx="74" cy="55" rx="8" ry="4.5" transform="rotate(-25 74 55)" fill="#FFFFFF" opacity="0.7"/>
+                            <circle cx="326" cy="76" r="18" fill="url(#bioLeaf3d)"/>
+                            <ellipse cx="320" cy="69" rx="6" ry="3.5" transform="rotate(-25 320 69)" fill="#FFFFFF" opacity="0.75"/>
+                        </g>
+
+                        <!-- Matraz Erlenmeyer 3D en alto relieve -->
+                        <g transform="translate(145, 28)" filter="url(#drop3dBio)">
+                            <!-- Base sombra de contacto -->
+                            <ellipse cx="55" cy="172" rx="46" ry="9" fill="#07170E" opacity="0.65"/>
+                            <!-- Cuerpo de vidrio 3D -->
+                            <path d="M40 16 H70 V56 L102 142 C107 156 97 170 82 170 H28 C13 170 3 156 8 142 L40 56 Z" fill="url(#bioGlass3d)" stroke="#FFFFFF" stroke-width="2.5" stroke-opacity="0.85"/>
+                            <!-- Líquido bioactivo 3D -->
+                            <path d="M22 112 C38 102 72 120 88 108 L97 139 C101 150 93 162 81 162 H29 C17 162 9 150 13 139 Z" fill="url(#bioLiquid3d)"/>
+                            <!-- Superficie elíptica 3D del líquido -->
+                            <ellipse cx="55" cy="111" rx="33" ry="6.5" fill="#B2F5EA" opacity="0.85"/>
+                            <!-- Brote vegetal 3D emergiendo -->
+                            <path d="M55 110 C55 82 78 68 92 73 C86 92 70 104 55 110 Z" fill="url(#bioLeaf3d)" stroke="#FFFFFF" stroke-width="1.2"/>
+                            <path d="M55 114 C55 90 34 78 20 84 C26 100 40 110 55 114 Z" fill="url(#bioLeaf3d)" stroke="#FFFFFF" stroke-width="1.2"/>
+                            <!-- Anillo superior 3D del matraz -->
+                            <rect x="35" y="10" width="40" height="10" rx="5" fill="#FFFFFF" opacity="0.9"/>
+                            <!-- Reflejo de luz vertical en el vidrio -->
+                            <path d="M44 26 V58 L20 132" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round" opacity="0.65"/>
+                        </g>
+                    </svg>
+                `;
+            }
+            if (theme === "data") {
+                return `
+                    <svg viewBox="0 0 400 240" class="w-full h-full object-cover" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <radialGradient id="data3dBg" cx="25%" cy="20%" r="85%">
+                                <stop offset="0%" stop-color="#63B3ED"/>
+                                <stop offset="48%" stop-color="#0056B3"/>
+                                <stop offset="100%" stop-color="#09192F"/>
+                            </radialGradient>
+                            <linearGradient id="chipTop3d" x1="0" y1="0" x2="1" y2="1">
+                                <stop offset="0%" stop-color="#2D3748"/>
+                                <stop offset="100%" stop-color="#0F172A"/>
+                            </linearGradient>
+                            <linearGradient id="bar3dBlue" x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="0%" stop-color="#90CDF4"/>
+                                <stop offset="50%" stop-color="#3182CE"/>
+                                <stop offset="100%" stop-color="#1A365D"/>
+                            </linearGradient>
+                            <linearGradient id="bar3dCyan" x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="0%" stop-color="#E6FFFA"/>
+                                <stop offset="50%" stop-color="#38BDF8"/>
+                                <stop offset="100%" stop-color="#0369A1"/>
+                            </linearGradient>
+                            <filter id="drop3dData" x="-20%" y="-20%" width="140%" height="140%">
+                                <feDropShadow dx="0" dy="10" stdDeviation="7" flood-color="#040D1A" flood-opacity="0.6"/>
+                            </filter>
+                        </defs>
+
+                        <rect width="400" height="240" fill="url(#data3dBg)"/>
+                        <!-- Plataforma isométrica 3D -->
+                        <polygon points="200,132 340,182 200,228 60,182" fill="#0B2545" stroke="#63B3ED" stroke-width="2" stroke-opacity="0.5"/>
+                        <polygon points="60,182 200,228 200,238 60,192" fill="#061529"/>
+                        <polygon points="340,182 200,228 200,238 340,192" fill="#091E3A"/>
+
+                        <!-- Barras de Datos 3D con volumen -->
+                        <g filter="url(#drop3dData)">
+                            <rect x="88" y="118" width="24" height="58" rx="6" fill="url(#bar3dBlue)" stroke="#BEE3F8" stroke-width="1.5"/>
+                            <ellipse cx="100" cy="118" rx="12" ry="4" fill="#EBF8FF"/>
+                            <rect x="288" y="92" width="24" height="84" rx="6" fill="url(#bar3dCyan)" stroke="#FFFFFF" stroke-width="1.5"/>
+                            <ellipse cx="300" cy="92" rx="12" ry="4" fill="#FFFFFF"/>
+                        </g>
+
+                        <!-- Núcleo Central IA 3D en relieve -->
+                        <g transform="translate(150, 56)" filter="url(#drop3dData)">
+                            <!-- Pines metálicos 3D -->
+                            <g fill="#CBD5E1">
+                                <rect x="-12" y="22" width="14" height="7" rx="2"/><rect x="-12" y="46" width="14" height="7" rx="2"/><rect x="-12" y="70" width="14" height="7" rx="2"/>
+                                <rect x="98" y="22" width="14" height="7" rx="2"/><rect x="98" y="46" width="14" height="7" rx="2"/><rect x="98" y="70" width="14" height="7" rx="2"/>
+                                <rect x="22" y="-12" width="7" height="14" rx="2"/><rect x="46" y="-12" width="7" height="14" rx="2"/><rect x="70" y="-12" width="7" height="14" rx="2"/>
+                                <rect x="22" y="98" width="7" height="14" rx="2"/><rect x="46" y="98" width="7" height="14" rx="2"/><rect x="70" y="98" width="7" height="14" rx="2"/>
+                            </g>
+                            <!-- Base extrusionada 3D -->
+                            <rect x="0" y="8" width="100" height="96" rx="22" fill="#020617"/>
+                            <!-- Cara superior biselada -->
+                            <rect x="0" y="0" width="100" height="96" rx="22" fill="url(#chipTop3d)" stroke="#7DD3FC" stroke-width="3"/>
+                            <rect x="10" y="10" width="80" height="76" rx="15" fill="none" stroke="#38BDF8" stroke-width="1.5" stroke-opacity="0.55"/>
+                            <text x="50" y="58" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="30" font-weight="800" fill="#FFFFFF">IA</text>
+                        </g>
+                    </svg>
+                `;
+            }
+            return `
+                <svg viewBox="0 0 400 240" class="w-full h-full object-cover" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <radialGradient id="game3dBg" cx="25%" cy="20%" r="85%">
+                            <stop offset="0%" stop-color="#FC8181"/>
+                            <stop offset="48%" stop-color="#E53E3E"/>
+                            <stop offset="100%" stop-color="#521414"/>
+                        </radialGradient>
+                        <linearGradient id="padBody3d" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0%" stop-color="#FFFFFF"/>
+                            <stop offset="70%" stop-color="#EDF2F7"/>
+                            <stop offset="100%" stop-color="#CBD5E0"/>
+                        </linearGradient>
+                        <linearGradient id="padBase3d" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0%" stop-color="#A0AEC0"/>
+                            <stop offset="100%" stop-color="#4A5568"/>
+                        </linearGradient>
+                        <filter id="drop3dGame" x="-20%" y="-20%" width="140%" height="140%">
+                            <feDropShadow dx="0" dy="12" stdDeviation="8" flood-color="#2D0808" flood-opacity="0.6"/>
+                        </filter>
+                    </defs>
+
+                    <rect width="400" height="240" fill="url(#game3dBg)"/>
+                    <!-- Montañas poligonales 3D estilo Low-Poly Fueguino -->
+                    <polygon points="-20,240 85,125 190,240" fill="#742A2A" opacity="0.65"/>
+                    <polygon points="85,125 135,180 85,240" fill="#4A1212" opacity="0.55"/>
+                    <polygon points="210,240 315,110 420,240" fill="#742A2A" opacity="0.7"/>
+                    <polygon points="315,110 368,175 315,240" fill="#4A1212" opacity="0.6"/>
+
+                    <!-- Cubos y gemas flotantes 3D -->
+                    <g filter="url(#drop3dGame)">
+                        <rect x="52" y="42" width="28" height="28" rx="7" transform="rotate(-15 52 42)" fill="#F6AD55" stroke="#FFFFFF" stroke-width="2"/>
+                        <circle cx="338" cy="58" r="15" fill="#63B3ED" stroke="#FFFFFF" stroke-width="2"/>
+                        <ellipse cx="333" cy="53" rx="5" ry="3" transform="rotate(-25 333 53)" fill="#FFFFFF" opacity="0.8"/>
+                    </g>
+
+                    <!-- Gamepad 3D en alto relieve -->
+                    <g transform="translate(105, 58)" filter="url(#drop3dGame)">
+                        <!-- Extrusión 3D inferior del mando -->
+                        <rect x="0" y="24" width="190" height="104" rx="48" fill="url(#padBase3d)"/>
+                        <!-- Cuerpo principal 3D con brillo superior -->
+                        <rect x="0" y="12" width="190" height="104" rx="48" fill="url(#padBody3d)" stroke="#FFFFFF" stroke-width="2.5"/>
+                        
+                        <!-- Cruceta D-Pad 3D con relieve -->
+                        <rect x="44" y="44" width="14" height="40" rx="4" fill="#1A202C"/>
+                        <rect x="31" y="57" width="40" height="14" rx="4" fill="#1A202C"/>
+                        <rect x="46" y="46" width="10" height="34" rx="3" fill="#2D3748"/>
+                        <rect x="33" y="59" width="34" height="10" rx="3" fill="#2D3748"/>
+
+                        <!-- Botones 3D con base y cúpula brillante -->
+                        <g>
+                            <circle cx="138" cy="48" r="9" fill="#9B2C2C"/><circle cx="138" cy="45" r="8.5" fill="#F56565" stroke="#FFFFFF" stroke-width="1.2"/>
+                            <circle cx="157" cy="64" r="9" fill="#1A365D"/><circle cx="157" cy="61" r="8.5" fill="#4299E1" stroke="#FFFFFF" stroke-width="1.2"/>
+                            <circle cx="119" cy="64" r="9" fill="#22543D"/><circle cx="119" cy="61" r="8.5" fill="#48BB78" stroke="#FFFFFF" stroke-width="1.2"/>
+                            <circle cx="138" cy="80" r="9" fill="#975A16"/><circle cx="138" cy="77" r="8.5" fill="#ECC94B" stroke="#FFFFFF" stroke-width="1.2"/>
+                        </g>
+                    </g>
+                </svg>
+            `;
+        }
+
+        function renderGallery() {
+            const container = document.getElementById("gallery-grid");
+            container.innerHTML = CMS_STORE.galleryItems.map(item => {
+                let hoverTheme = "hover-accent-blue";
+                if (item.theme === "bio" || item.id === "user-2") hoverTheme = "hover-accent-green";
+                if (item.theme === "game" || item.id === "user-1") hoverTheme = "hover-accent-red";
+
+                if (item.type === "ai") {
+                    return `
+                        <article class="${hoverTheme} bg-white rounded-3xl overflow-hidden border border-neutral-200/80 shadow-card flex flex-col justify-between group">
+                            <div class="relative h-52 overflow-hidden">
+                                ${getAIIllustrationSVG(item.theme)}
+                                <span class="absolute top-3.5 left-3.5 px-3 py-1 rounded-full bg-tdf-dark/80 backdrop-blur-xs text-white text-[11px] font-bold flex items-center gap-1.5">
+                                    <i class="ph-fill ph-sparkle text-amber-400"></i> ${item.badge}
+                                </span>
+                            </div>
+                            <div class="p-5">
+                                <h3 class="font-display font-bold text-base text-tdf-dark">${item.title}</h3>
+                                <p class="text-xs text-neutral-600 mt-1.5 leading-relaxed">${item.caption}</p>
+                            </div>
+                        </article>
+                    `;
+                }
+
+                // Tarjeta interactiva para adjuntar foto propia del usuario
+                return `
+                    <article class="${hoverTheme} bg-tdf-cream/40 rounded-3xl overflow-hidden border-2 border-dashed border-neutral-300 transition-all flex flex-col justify-between group">
+                        <div class="relative h-52 bg-neutral-100 flex items-center justify-center overflow-hidden">
+                            ${item.imageUrl ? `
+                                <img src="${item.imageUrl}" alt="${item.title}" class="w-full h-full object-cover">
+                                <label class="absolute bottom-3 right-3 px-3 py-1.5 rounded-xl bg-tdf-dark/85 hover:bg-tdf-dark text-white text-xs font-bold cursor-pointer flex items-center gap-1.5 shadow-md">
+                                    <i class="ph-bold ph-arrows-clockwise"></i> Cambiar foto
+                                    <input type="file" accept="image
+>
+</body>
+</html>

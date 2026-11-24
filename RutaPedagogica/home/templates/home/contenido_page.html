@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static wagtailcore_tags wagtailimages_tags %}
+
+{% block title_suffix %}{% endblock %}
+{% block body_class %}template-contenido{% endblock %}
+
+{% block extra_css %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'css/rutas.css' %}">
+<style>
+    .contenido { max-width: 820px; margin: 0 auto; padding: 2.5rem 1.25rem 4rem; }
+    .contenido h1 { font-family: "Plus Jakarta Sans", sans-serif; font-size: clamp(2rem, 4vw, 3.2rem); line-height: 1.1; margin: 0.6rem 0 1rem; }
+    .contenido .bajada { font-size: 1.15rem; color: #444; }
+    .contenido .cuerpo { font-size: 1.05rem; line-height: 1.65; }
+    .contenido .cuerpo img { max-width: 100%; height: auto; border-radius: 1rem; }
+    .contenido .portada { width: 100%; border-radius: 1.4rem; max-height: 420px; object-fit: cover; margin: 1rem 0 1.5rem; }
+    .contenido-nav { display: flex; justify-content: space-between; gap: 1rem; align-items: center; padding: 1rem 1.25rem; background: #fff; border-bottom: 1px solid #eee; }
+    .contenido-nav a { color: #1a1a1a; font-weight: 700; text-decoration: none; }
+</style>
+{% endblock %}
+
+{% block content %}
+<nav class="contenido-nav">
+    <a href="/">Rutas Pedagógicas</a>
+    {% if request.user.is_staff %}
+    <a href="/admin/pages/{{ page.id }}/edit/">Editar esta página</a>
+    {% endif %}
+</nav>
+<article id="inicio" class="contenido">
+    <p class="bajada" style="letter-spacing:.12em;font-size:.75rem;font-weight:700;">{{ page.get_parent.title|upper }}</p>
+    <h1>{{ page.title }}</h1>
+    {% if page.intro %}<p class="bajada">{{ page.intro }}</p>{% endif %}
+    {% if page.imagen %}
+        {% image page.imagen width-1600 as foto %}
+        <img class="portada" src="{{ foto.url }}" alt="{{ page.title }}">
+    {% endif %}
+    <div class="cuerpo">{{ page.cuerpo|richtext }}</div>
+</article>
+{% endblock %}

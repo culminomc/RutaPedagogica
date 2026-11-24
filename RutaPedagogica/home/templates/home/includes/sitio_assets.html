@@ -1,0 +1,33 @@
+{% load static %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    cream: "#fdf6e3",
+                    ink: "#1a1a1a",
+                    tdf: {
+                        cream: "#FDF6E3",
+                        dark: "#1A1A1A",
+                        bio: "#38A169",
+                        bioLight: "#E6F4EA",
+                        data: "#0056B3",
+                        dataLight: "#E8F1FA",
+                        game: "#E53E3E",
+                        gameLight: "#FDE8E8",
+                    },
+                },
+                fontFamily: {
+                    sans: ["Inter", "system-ui", "sans-serif"],
+                    display: ["Plus Jakarta Sans", "system-ui", "sans-serif"],
+                },
+            },
+        },
+    };
+</script>
+<link rel="stylesheet" href="{% static 'css/rutas.css' %}?v=aif5">
+<script src="https://unpkg.com/@phosphor-icons/web"></script>

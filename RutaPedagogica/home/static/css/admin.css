@@ -1,0 +1,154 @@
+:root {
+    --w-color-primary-hue: 14;
+    --w-color-primary-saturation: 100%;
+    --w-color-primary-lightness: 42%;
+    --w-color-secondary-hue: 36;
+    --w-color-secondary-saturation: 88%;
+    --w-color-secondary-lightness: 48%;
+    --w-color-surface-page: #f7f4ef;
+    --w-color-surface-header: #fff;
+    --w-color-surface-menus: #ff512f;
+    --w-color-surface-menu-item-active: #e85d04;
+}
+
+@media (prefers-color-scheme: dark) {
+    .w-theme-system {
+        --w-color-surface-page: #f7f3ea;
+        --w-color-surface-field: #fff;
+        --w-color-surface-field-inactive: #f3eee4;
+        --w-color-surface-header: #fff;
+        --w-color-surface-menus: #ff512f;
+        --w-color-surface-menu-item-active: #e85d04;
+        --w-color-surface-dashboard-panel: #fff;
+        --w-color-surface-tooltip: #143028;
+        --w-color-text-context: #1a1a1a;
+        --w-color-text-label: #1a1a1a;
+        --w-color-text-meta: #5c6570;
+        --w-color-text-placeholder: #8a8175;
+        --w-color-text-label-menus-default: rgba(255, 255, 255, 0.82);
+        --w-color-text-label-menus-active: #fff;
+        --w-color-text-link-default: #e85d04;
+        --w-color-text-link-hover: #c2410c;
+        --w-color-icon-primary: #1a1a1a;
+        --w-color-icon-primary-hover: #ff512f;
+    }
+}
+
+.w-theme-dark {
+    --w-color-surface-page: #f7f3ea;
+    --w-color-surface-field: #fff;
+    --w-color-surface-header: #fff;
+    --w-color-surface-menus: #ff512f;
+    --w-color-surface-menu-item-active: #e85d04;
+    --w-color-surface-dashboard-panel: #fff;
+    --w-color-text-context: #1a1a1a;
+    --w-color-text-label: #1a1a1a;
+    --w-color-text-meta: #5c6570;
+    --w-color-icon-primary: #1a1a1a;
+}
+
+#wagtail-sidebar {
+    background: linear-gradient(180deg, #ff512f 0%, #f09819 100%) !important;
+}
+
+#wagtail-sidebar .sidebar-menu-item__link,
+#wagtail-sidebar [class*="menuitem"] span {
+    white-space: normal;
+    line-height: 1.2;
+}
+
+.rp-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    color: #fff;
+    max-width: 15rem;
+}
+
+.rp-mark {
+    width: 2.7rem;
+    height: 2.7rem;
+    display: none;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.rp-mark--white {
+    display: block;
+}
+
+.rp-word {
+    font-weight: 700;
+    font-size: 0.92rem;
+    line-height: 1.15;
+    color: #fff;
+    letter-spacing: 0.01em;
+}
+
+.login {
+    background:
+        radial-gradient(circle at top, #f09819 0%, transparent 42%),
+        linear-gradient(180deg, #0f172a 0%, #1a120c 100%) !important;
+}
+
+.login .rp-mark--white {
+    display: none;
+}
+
+.login .rp-mark--color {
+    display: block;
+}
+
+.login-logo .rp-brand {
+    flex-direction: column;
+    gap: 0.8rem;
+    max-width: none;
+}
+
+.login-logo .rp-mark {
+    width: 5.5rem;
+    height: 5.5rem;
+}
+
+.login-logo .rp-word {
+    font-size: 1.35rem;
+    color: #fff;
+}
+
+.login .content-wrapper {
+    border-radius: 1.25rem;
+}
+
+.button {
+    border-radius: 0.75rem;
+}
+
+.rp-admin-guide {
+    background: #fff;
+    border: 1px solid rgba(26, 26, 26, 0.08);
+    border-radius: 1rem;
+    padding: 1.25rem 1.4rem;
+    margin-bottom: 1rem;
+}
+
+.rp-admin-guide h2 {
+    margin: 0 0 0.35rem;
+    font-size: 1.25rem;
+}
+
+.rp-admin-guide p {
+    margin: 0 0 0.8rem;
+}
+
+.rp-admin-guide ol {
+    margin: 0;
+    padding-left: 1.2rem;
+}
+
+.rp-admin-guide li + li {
+    margin-top: 0.35rem;
+}
+
+.w-panel-upgrade {
+    display: none;
+}

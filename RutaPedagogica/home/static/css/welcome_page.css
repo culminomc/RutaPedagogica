@@ -111,7 +111,7 @@ svg:not(:root) {
 }
 
 .acceso-btn {
-    display: inline-block;
+    display: none;
     margin-top: 24px;
     padding: 12px 28px;
     background-color: #308282;

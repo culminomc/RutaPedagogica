@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{% load static wagtailcore_tags wagtailimages_tags %}
+
+{% block title_suffix %}{% endblock %}
+{% block body_class %}template-rutas bg-cream text-dark{% endblock %}
+
+{% block extra_css %}
+{% include "home/includes/sitio_assets.html" %}
+{% endblock %}
+
+{% block content %}
+<div id="inicio" class="min-h-screen bg-white">
+    {% include "home/includes/sitio_header.html" with sitio=home root="/" %}
+
+    <section class="youth-hero text-white relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4 py-10 sm:py-14 relative z-10">
+            <p class="text-xs font-extrabold uppercase tracking-widest text-white/80">Programa educativo provincial</p>
+            <h1 class="font-display font-extrabold text-3xl sm:text-5xl leading-tight mt-3">{{ page.title }}</h1>
+            {% if page.intro %}<p class="text-white/95 text-base sm:text-lg mt-4 max-w-3xl">{{ page.intro }}</p>{% endif %}
+        </div>
+    </section>
+
+    <main class="bg-[#fdf6e3]">
+        <div class="max-w-6xl mx-auto px-4 py-12 sm:py-16 space-y-8">
+            {% if page.imagen %}
+                {% image page.imagen width-1600 as foto %}
+                <img class="w-full rounded-[2rem] object-cover max-h-[460px] shadow-[0_14px_30px_-10px_rgba(26,26,26,.14)]" src="{{ foto.url }}" alt="{{ page.title }}">
+            {% endif %}
+
+            {% if page.cuerpo %}
+            <div class="route-card-3d bg-white rounded-[2rem] border border-neutral-200/90 p-6 sm:p-8 seccion-rich">
+                {{ page.cuerpo|richtext }}
+            </div>
+            {% endif %}
+
+            {% for bloque in page.bloques.all %}
+            <section class="route-card-3d bg-white rounded-[2rem] border border-neutral-200/90 p-6 sm:p-8">
+                <h2 class="font-display font-extrabold text-2xl">{{ bloque.titulo }}</h2>
+                {% if bloque.imagen %}
+                    {% image bloque.imagen width-1400 as foto_bloque %}
+                    <img class="w-full rounded-[1.4rem] mt-4 object-cover max-h-[420px]" src="{{ foto_bloque.url }}" alt="{{ bloque.titulo }}">
+                {% endif %}
+                {% if bloque.texto %}<div class="seccion-rich mt-4">{{ bloque.texto|richtext }}</div>{% endif %}
+                {% if bloque.enlace %}
+                <a href="{{ bloque.enlace }}" class="youth-action-btn inline-flex items-center gap-2 mt-5 no-underline font-semibold px-5 py-3">
+                    {{ bloque.enlace_texto|default:bloque.enlace }} <i class="ph-bold ph-arrow-right"></i>
+                </a>
+                {% endif %}
+            </section>
+            {% endfor %}
+
+            {% if rutas %}
+            <section>
+                <p class="text-xs font-extrabold uppercase tracking-widest mb-2">Ejes pedagógicos provinciales</p>
+                <h2 class="font-display font-extrabold text-3xl mb-6">Las 3 Rutas Temáticas</h2>
+                <div class="grid md:grid-cols-3 gap-4">
+                    {% for ruta in rutas %}
+                    <a href="{{ ruta.url }}" class="route-card-3d rounded-[2rem] overflow-hidden no-underline bg-white border border-neutral-200/90">
+                        <div class="route-header-3d p-5 text-white min-h-[9rem]" data-theme="{{ ruta.theme }}">
+                            <p class="text-xs font-extrabold uppercase tracking-wider opacity-80">{{ ruta.code }}</p>
+                            <h3 class="font-display font-extrabold text-xl mt-2">{{ ruta.title }}</h3>
+                        </div>
+                        <p class="p-5 text-sm text-neutral-700">{{ ruta.summary }}</p>
+                    </a>
+                    {% endfor %}
+                </div>
+            </section>
+            {% endif %}
+
+            <p>
+                <a href="/#inicio" class="inline-flex items-center gap-2 font-bold text-ink">
+                    <i class="ph-bold ph-arrow-left"></i> Volver al inicio
+                </a>
+            </p>
+        </div>
+    </main>
+
+    {% include "home/includes/sitio_footer.html" %}
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://unpkg.com/@phosphor-icons/web"></script>
+<script src="{% static 'js/rutas.js' %}"></script>
+{% endblock %}

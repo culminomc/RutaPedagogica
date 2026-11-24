@@ -1,0 +1,16 @@
+{% extends "wagtailadmin/login.html" %}
+{% load static %}
+
+{% block branding_title %}Agencia de Innovación{% endblock %}
+
+{% block extra_css %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'css/admin.css' %}?v=aif3">
+{% endblock %}
+{% block branding_login %}Ingresar a Agencia de Innovación{% endblock %}
+
+{% block branding_logo %}
+    <div class="login-logo">
+        {% include "wagtailadmin/logo.html" with wordmark="True" %}
+    </div>
+{% endblock %}

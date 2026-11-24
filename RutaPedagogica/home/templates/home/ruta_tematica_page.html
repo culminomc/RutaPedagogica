@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+{% load static wagtailcore_tags wagtailimages_tags %}
+
+{% block title_suffix %}{% endblock %}
+{% block body_class %}template-rutas bg-cream text-dark{% endblock %}
+
+{% block extra_css %}
+{% include "home/includes/sitio_assets.html" %}
+{% endblock %}
+
+{% block content %}
+<div id="inicio" class="min-h-screen bg-white">
+    {% include "home/includes/sitio_header.html" with sitio=home root="/" %}
+
+    <section class="route-header-3d text-white relative overflow-hidden" data-theme="{{ page.theme }}">
+        <svg class="absolute inset-0 w-full h-full opacity-20 pointer-events-none" viewBox="0 0 320 180" fill="none" aria-hidden="true">
+            {% if page.theme == "data" %}
+            <path class="road-dash" d="M-10 135 C 110 175, 200 95, 330 130" stroke="#FFFFFF" stroke-width="14" stroke-dasharray="10 10"/>
+            {% elif page.theme == "bio" %}
+            <path class="road-dash" d="M-10 115 C 100 165, 220 110, 330 155" stroke="#FFFFFF" stroke-width="14" stroke-dasharray="10 10"/>
+            {% else %}
+            <path class="road-dash" d="M-10 150 C 90 110, 210 170, 330 95" stroke="#FFFFFF" stroke-width="14" stroke-dasharray="10 10"/>
+            {% endif %}
+        </svg>
+        <div class="max-w-6xl mx-auto px-4 py-10 sm:py-14 relative z-10">
+            <div class="flex items-center justify-between gap-4 mb-6">
+                <span class="relief-badge-3d text-xs font-extrabold uppercase tracking-wider px-3.5 py-1.5 rounded-full">{{ page.code }}</span>
+                <div class="relief-icon-3d w-14 h-14 rounded-2xl grid place-items-center">
+                    <i class="ph-bold {{ page.icon }} text-2xl"></i>
+                </div>
+            </div>
+            <h1 class="font-display font-extrabold text-3xl sm:text-5xl leading-tight drop-shadow-sm">{{ page.title }}</h1>
+            {% if page.subtitle %}<p class="text-white/90 text-base sm:text-lg mt-3 max-w-3xl">{{ page.subtitle }}</p>{% endif %}
+        </div>
+    </section>
+
+    <main class="bg-[#fdf6e3]">
+        <div class="max-w-6xl mx-auto px-4 py-12 sm:py-16 space-y-8">
+            {% if page.summary %}
+            <p class="text-lg text-neutral-700 leading-relaxed max-w-3xl">{{ page.summary }}</p>
+            {% endif %}
+
+            {% if page.cuerpo %}
+            <div class="route-card-3d bg-white rounded-[2rem] border border-neutral-200/90 p-6 sm:p-8 seccion-rich">
+                {{ page.cuerpo|richtext }}
+            </div>
+            {% endif %}
+
+            {% if page.niveles.all %}
+            <section>
+                <p class="text-xs font-extrabold uppercase tracking-widest text-ink mb-3">Progresión curricular</p>
+                <h2 class="font-display font-extrabold text-3xl text-ink tracking-tight">Progresión por nivel</h2>
+                <div class="mt-6 grid gap-4">
+                    {% for nivel in page.niveles.all %}
+                    <article class="rounded-[1.5rem] p-5 sm:p-6 theme-soft border border-black/5" data-theme="{{ page.theme }}">
+                        <p class="text-[11px] font-extrabold uppercase tracking-widest">Nivel {{ forloop.counter }}</p>
+                        <h3 class="font-display font-bold text-xl mt-1">{{ nivel.level }}</h3>
+                        <p class="text-sm mt-2 leading-relaxed">{{ nivel.description }}</p>
+                    </article>
+                    {% endfor %}
+                </div>
+            </section>
+            {% endif %}
+
+            {% for bloque in page.bloques.all %}
+            <section class="route-card-3d bg-white rounded-[2rem] border border-neutral-200/90 p-6 sm:p-8">
+                <h2 class="font-display font-extrabold text-2xl">{{ bloque.titulo }}</h2>
+                {% if bloque.imagen %}
+                    {% image bloque.imagen width-1400 as foto %}
+                    <img class="w-full rounded-[1.4rem] mt-4 object-cover max-h-[420px]" src="{{ foto.url }}" alt="{{ bloque.titulo }}">
+                {% endif %}
+                {% if bloque.texto %}<div class="seccion-rich mt-4">{{ bloque.texto|richtext }}</div>{% endif %}
+                {% if bloque.enlace %}
+                <a href="{{ bloque.enlace }}" class="inline-flex items-center justify-center gap-2 mt-5 w-full sm:w-auto py-3.5 px-5 rounded-xl font-bold text-sm theme-soft" data-theme="{{ page.theme }}">
+                    {{ bloque.enlace_texto|default:bloque.enlace }} <i class="ph-bold ph-arrow-up-right"></i>
+                </a>
+                {% endif %}
+            </section>
+            {% endfor %}
+
+            {% if otras_rutas %}
+            <section>
+                <h2 class="font-display font-extrabold text-2xl mb-4">Otras rutas temáticas</h2>
+                <div class="grid md:grid-cols-2 gap-4">
+                    {% for ruta in otras_rutas %}
+                    <a href="{{ ruta.url }}" class="route-card rounded-[1.7rem] overflow-hidden no-underline text-white">
+                        <div class="route-header-3d p-5 min-h-[8rem] flex flex-col justify-end" data-theme="{{ ruta.theme }}">
+                            <span class="text-xs font-extrabold uppercase tracking-wider opacity-80">{{ ruta.code }}</span>
+                            <strong class="font-display text-xl mt-1">{{ ruta.title }}</strong>
+                        </div>
+                    </a>
+                    {% endfor %}
+                </div>
+            </section>
+            {% endif %}
+
+            <p>
+                <a href="/#rutas" class="inline-flex items-center gap-2 font-bold text-ink">
+                    <i class="ph-bold ph-arrow-left"></i> Volver a Las 3 Rutas Temáticas
+                </a>
+            </p>
+        </div>
+    </main>
+
+    {% include "home/includes/sitio_footer.html" %}
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://unpkg.com/@phosphor-icons/web"></script>
+<script src="{% static 'js/rutas.js' %}"></script>
+{% endblock %}
