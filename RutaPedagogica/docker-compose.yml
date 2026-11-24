@@ -1,0 +1,23 @@
+services:
+  web:
+    build: .
+    image: rutapedagogica:prod
+    container_name: rutapedagogica
+    restart: unless-stopped
+    ports:
+      - "80:8000"
+    environment:
+      DJANGO_SETTINGS_MODULE: mysite.settings.production
+      MSSQL_HOST: "10.1.9.113"
+      MSSQL_NAME: RutaPedagogica_Prod
+      MSSQL_USER: SA
+      MSSQL_PASSWORD: "Davinci2024#"
+      MSSQL_DRIVER: "ODBC Driver 18 for SQL Server"
+      ALLOWED_HOSTS: "10.1.9.194,localhost,127.0.0.1"
+      CSRF_TRUSTED_ORIGINS: "http://10.1.9.194"
+      WAGTAILADMIN_BASE_URL: "http://10.1.9.194"
+    volumes:
+      - media:/app/media
+
+volumes:
+  media:

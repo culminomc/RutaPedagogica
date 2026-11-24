@@ -64,7 +64,9 @@ ENV PYTHONUNBUFFERED=1 \
     MSSQL_USER=SA \
     MSSQL_PASSWORD="Davinci2024#" \
     MSSQL_DRIVER="ODBC Driver 18 for SQL Server" \
-    ALLOWED_HOSTS=*
+    ALLOWED_HOSTS=10.1.9.194,localhost,127.0.0.1 \
+    CSRF_TRUSTED_ORIGINS=http://10.1.9.194 \
+    WAGTAILADMIN_BASE_URL=http://10.1.9.194
 
 
 
@@ -80,19 +82,14 @@ RUN chown wagtail:wagtail /app
 # Copy the source code of the project into the container.
 COPY --chown=wagtail:wagtail . .
 
-# Use user "wagtail" to run the build commands below and the server itself.
+# Collect static files as the app user, then run as root so el volumen
+# de media se pueda crear y gunicorn escuche en 0.0.0.0.
 USER wagtail
-
-# Collect static files.
 RUN python manage.py collectstatic --noinput --clear
+USER root
+RUN mkdir -p /app/media && chown -R wagtail:wagtail /app/media
 
-# Runtime command that executes when "docker run" is called, it does the
-# following:
-#   1. Migrate the database.
-#   2. Start the application server.
-# WARNING:
-#   Migrating database at the same time as starting the server IS NOT THE BEST
-#   PRACTICE. The database should be migrated manually or using the release
-#   phase facilities of your hosting platform. This is used only so the
-#   Wagtail instance can be started with a simple "docker run" command.
-CMD set -xe; python manage.py migrate --noinput; gunicorn mysite.wsgi:application
+COPY docker-entrypoint.sh /docker-entrypoint.sh
+RUN chmod +x /docker-entrypoint.sh
+
+ENTRYPOINT ["/docker-entrypoint.sh"]

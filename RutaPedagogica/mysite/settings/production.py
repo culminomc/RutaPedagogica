@@ -21,11 +21,19 @@ ALLOWED_HOSTS = [
 
 CSRF_TRUSTED_ORIGINS = [
     o.strip()
-    for o in os.environ.get("CSRF_TRUSTED_ORIGINS", "").split(",")
+    for o in os.environ.get("CSRF_TRUSTED_ORIGINS", "http://10.1.9.194").split(",")
     if o.strip()
 ]
 
+WAGTAILADMIN_BASE_URL = os.environ.get("WAGTAILADMIN_BASE_URL", "http://10.1.9.194")
+
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+
+MIDDLEWARE = [
+    MIDDLEWARE[0],
+    "whitenoise.middleware.WhiteNoiseMiddleware",
+    *MIDDLEWARE[1:],
+]
 
 DATABASES = {
     "default": build_sqlserver_database(
@@ -38,7 +46,7 @@ DATABASES = {
 # outdated JavaScript / CSS assets being served from cache
 # (e.g. after a Wagtail upgrade).
 # See https://docs.djangoproject.com/en/5.2/ref/contrib/staticfiles/#manifeststaticfilesstorage
-STORAGES["staticfiles"]["BACKEND"] = "django.contrib.staticfiles.storage.ManifestStaticFilesStorage"
+STORAGES["staticfiles"]["BACKEND"] = "whitenoise.storage.CompressedStaticFilesStorage"
 
 try:
     from .local import *
