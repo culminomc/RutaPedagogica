@@ -27,6 +27,11 @@
     };
 </script>
 <link rel="stylesheet" href="{% static 'css/rutas.css' %}">
+<style>
+    body.template-rutas, .bg-cream { background: {{ page.fondo_css }}; }
+    .text-ink, .text-dark { color: {{ page.texto_css }}; }
+    .bg-ink { background: {{ page.texto_css }}; }
+</style>
 {% endblock %}
 
 {% block content %}
@@ -37,11 +42,11 @@
                 <span class="inline-grid place-items-center w-7 h-7 rounded-full" style="background: conic-gradient(#2f9e6b, #f4b000, #e11d48, #2f9e6b);" aria-hidden="true">
                     <span class="w-4 h-4 rounded-full bg-[#f6efe0]"></span>
                 </span>
-                Gobierno de Tierra del Fuego
+                {{ page.gobierno_texto }}
             </a>
             <div class="flex items-center gap-3">
                 <a href="{{ page.instagram_url }}" class="hidden sm:inline-flex items-center gap-1.5 font-semibold text-ink no-underline">
-                    <i class="ph-bold ph-instagram-logo text-lg"></i> @aif.tdf <i class="ph ph-arrow-up-right"></i>
+                    <i class="ph-bold ph-instagram-logo text-lg"></i> {{ page.instagram_usuario }} <i class="ph ph-arrow-up-right"></i>
                 </a>
                 <a href="/admin/" class="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-3 py-1.5 font-semibold text-ink no-underline shadow-sm">
                     <i class="ph ph-pencil-simple"></i> Editar Datos / Media
@@ -53,17 +58,22 @@
     <header class="sticky top-0 z-30 bg-white shadow-sm">
         <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
             <a href="#inicio" class="flex items-center gap-3 no-underline text-ink">
-                <span class="grid place-items-center w-12 h-12 rounded-2xl bg-ink text-white">
+                {% if page.logo %}
+                    {% image page.logo fill-96x96 as logo %}
+                    <img src="{{ logo.url }}" alt="{{ page.marca_titulo }}" class="w-12 h-12 rounded-2xl object-cover">
+                {% else %}
+                <span class="grid place-items-center w-12 h-12 rounded-2xl text-white" style="background: {{ page.texto_css }}">
                     <svg width="26" height="26" viewBox="0 0 26 26" aria-hidden="true">
-                        <circle cx="7" cy="16" r="3" fill="#38a169"/>
-                        <circle cx="18" cy="8" r="3" fill="#0056b3"/>
-                        <circle cx="19" cy="18" r="3" fill="#e53e3e"/>
+                        <circle cx="7" cy="16" r="3" fill="{{ page.verde_css }}"/>
+                        <circle cx="18" cy="8" r="3" fill="{{ page.azul_css }}"/>
+                        <circle cx="19" cy="18" r="3" fill="{{ page.rojo_css }}"/>
                         <path d="M9 14.5 L16 9.5 M9.5 16.5 L16.5 17.5" stroke="#fff" stroke-width="1.4"/>
                     </svg>
                 </span>
+                {% endif %}
                 <span>
-                    <span class="block font-display font-extrabold tracking-tight text-lg leading-none">RUTAS PEDAGÓGICAS</span>
-                    <span class="block text-[11px] tracking-[0.14em] text-neutral-500 mt-1">AGENCIA DE INNOVACIÓN FUEGUINA</span>
+                    <span class="block font-display font-extrabold tracking-tight text-lg leading-none">{{ page.marca_titulo }}</span>
+                    <span class="block text-[11px] tracking-[0.14em] text-neutral-500 mt-1">{{ page.marca_subtitulo }}</span>
                 </span>
             </a>
             <button type="button" class="grid place-items-center w-11 h-11" onclick="toggleMenu()" aria-label="Abrir menú">
@@ -92,15 +102,15 @@
         <section class="bg-cream">
             <div class="max-w-6xl mx-auto px-4 pt-10 pb-6">
                 <p class="inline-flex items-center gap-2 bg-white rounded-full px-4 py-2 shadow-sm text-xs font-bold tracking-[0.16em]">
-                    <span class="w-2.5 h-2.5 rounded-full bg-[#38a169]"></span>
+                    <span class="w-2.5 h-2.5 rounded-full" style="background: {{ page.verde_css }}"></span>
                     {{ page.eyebrow|upper }}
                 </p>
                 <h1 class="font-display font-extrabold tracking-tight text-4xl md:text-6xl leading-[1.05] mt-6 max-w-5xl">
                     {{ page.headline }}
                     {% for word in page.highlight_words %}
-                        {% if forloop.counter == 1 %}<span class="text-[#2f9e6b]">{{ word }}</span>
-                        {% elif forloop.counter == 2 %}<span class="text-[#2563eb]">{{ word }}</span>
-                        {% elif forloop.counter == 3 %}<span class="word-digital">{{ word }}</span>
+                        {% if forloop.counter == 1 %}<span style="color: {{ page.verde_css }}">{{ word }}</span>
+                        {% elif forloop.counter == 2 %}<span style="color: {{ page.azul_css }}">{{ word }}</span>
+                        {% elif forloop.counter == 3 %}<span class="word-digital" style="color: {{ page.rojo_css }}">{{ word }}</span>
                         {% else %}<span>{{ word }}</span>{% endif %}
                     {% endfor %}
                     {{ page.headline_rest }}
@@ -108,10 +118,10 @@
                 <div class="mt-6 max-w-3xl text-lg text-neutral-700 leading-relaxed">{{ page.intro|richtext }}</div>
                 <div class="mt-8 flex flex-wrap gap-3">
                     <a href="#escuelas" class="inline-flex items-center gap-2 bg-ink text-white no-underline font-semibold px-5 py-3 rounded-2xl">
-                        <i class="ph ph-buildings"></i> Escuelas por Ciudad
+                        <i class="ph ph-buildings"></i> {{ page.boton_escuelas }}
                     </a>
-                    <a href="{{ page.polos_url }}" class="inline-flex items-center gap-2 bg-white text-[#e06a12] no-underline font-semibold px-5 py-3 rounded-2xl border border-[#f3c7a2]">
-                        <i class="ph ph-sparkle"></i> Polos Creativos <i class="ph ph-arrow-up-right"></i>
+                    <a href="{{ page.polos_url }}" class="inline-flex items-center gap-2 bg-white no-underline font-semibold px-5 py-3 rounded-2xl border" style="color: {{ page.acento_css }}; border-color: {{ page.acento_css }}">
+                        <i class="ph ph-sparkle"></i> {{ page.boton_polos }} <i class="ph ph-arrow-up-right"></i>
                     </a>
                     {% if page.cta_texto %}
                     <a href="{{ descubri_url }}" class="youth-btn inline-flex items-center gap-2 no-underline font-semibold px-5 py-3">
@@ -119,6 +129,19 @@
                     </a>
                     {% endif %}
                 </div>
+                {% if page.imagen_portada or page.video_archivo or page.video_embed %}
+                <div class="mt-8 overflow-hidden rounded-[2rem] bg-ink text-white">
+                    {% if page.video_archivo %}
+                    <video src="{{ page.video_archivo.url }}" controls class="w-full max-h-[520px] bg-black"></video>
+                    {% elif page.video_embed %}
+                    <iframe src="{{ page.video_embed }}" class="w-full aspect-video" title="{{ page.video_titulo }}" allowfullscreen></iframe>
+                    {% elif page.imagen_portada %}
+                        {% image page.imagen_portada fill-1400x788 as portada %}
+                        <img src="{{ portada.url }}" alt="{{ page.video_titulo }}" class="w-full max-h-[520px] object-cover">
+                    {% endif %}
+                    {% if page.video_titulo %}<p class="px-5 py-4 font-display font-extrabold text-xl">{{ page.video_titulo }}</p>{% endif %}
+                </div>
+                {% endif %}
                 <div class="mt-8 flex flex-wrap gap-2">
                     {% for item in page.alcance_items %}
                     <span class="bg-white rounded-full px-3 py-1 text-sm font-medium border border-black/5">{{ item }}</span>
@@ -136,13 +159,19 @@
                     {% for slide in page.slides.all %}
                     <div class="slide {% if forloop.first %}active{% endif %}" data-title="{{ slide.title }}">
                         <div class="relative min-h-[320px] md:min-h-[420px]">
-                            {% if slide.image %}
+                            {% if slide.video_archivo %}
+                                <video src="{{ slide.video_archivo.url }}" controls class="absolute inset-0 w-full h-full object-cover bg-black"></video>
+                            {% elif slide.video_embed %}
+                                <iframe src="{{ slide.video_embed }}" class="absolute inset-0 w-full h-full" title="{{ slide.title }}" allowfullscreen></iframe>
+                            {% elif slide.image %}
                                 {% image slide.image fill-1400x788 as foto %}
                                 <img src="{{ foto.url }}" alt="{{ slide.title }}" class="absolute inset-0 w-full h-full object-cover">
                             {% endif %}
+                            {% if not slide.video_archivo and not slide.video_embed %}
                             <div class="absolute inset-0 theme-bg" data-theme="{{ slide.theme }}" {% if slide.image %}style="opacity:.35"{% endif %}></div>
                             <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent"></div>
                             <p class="absolute left-6 right-6 bottom-16 md:bottom-8 text-2xl md:text-4xl font-display font-extrabold leading-tight">{{ slide.title }}</p>
+                            {% endif %}
                         </div>
                     </div>
                     {% endfor %}
@@ -239,7 +268,9 @@
                     {% for item in page.gallery_items.all %}
                     <article class="overflow-hidden rounded-3xl border border-black/5 bg-white">
                         <div class="relative h-44 theme-bg" data-theme="{{ item.theme }}">
-                            {% if item.image %}
+                            {% if item.video_archivo %}
+                                <video src="{{ item.video_archivo.url }}" controls class="absolute inset-0 w-full h-full object-cover bg-black"></video>
+                            {% elif item.image %}
                                 {% image item.image fill-800x480 as foto %}
                                 <img src="{{ foto.url }}" alt="{{ item.title }}" class="absolute inset-0 w-full h-full object-cover">
                             {% endif %}

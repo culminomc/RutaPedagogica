@@ -22,7 +22,7 @@ class GuiaPanel(Component):
                 <p>Desde acá se administra toda la página pública. No hace falta tocar código.</p>
                 <ol>
                     <li><strong>Asistente:</strong> el botón naranja de la esquina inferior derecha. Pedile en castellano que cree una página, suba un video o dé de alta un usuario.</li>
-                    <li><strong>Portada:</strong> Páginas → Rutas Pedagógicas. Título, cifras, escuelas, biblioteca y contacto.</li>
+                    <li><strong>Página de inicio:</strong> menú lateral → Página de inicio. Ahí se cambian textos, colores, logo, imagen y video. Después, Publicar.</li>
                     <li><strong>Las 3 rutas:</strong> en el menú lateral, “Ruta: Videojuego”, “Ruta: Datos e IA” y “Ruta: Biotecnología”. Cada una tiene su página pública. Después de editar, pulsá Publicar.</li>
                     <li><strong>Descubrí más:</strong> menú lateral → Descubrí más. Ese es el contenido del botón naranja de la portada.</li>
                     <li><strong>Archivos:</strong> Imágenes y Documentos (incluye videos). El tamaño máximo se cambia en Ajustes de carga y videos.</li>
@@ -96,11 +96,15 @@ def _item_edicion(page, label, order, icon="doc-full"):
 
 @hooks.register("construct_main_menu")
 def menu_paginas_editables(request, menu_items):
-    from home.models import DescubriMasPage, RutaTematicaPage
+    from home.models import DescubriMasPage, HomePage, RutaTematicaPage
 
     menu_items.append(
         MenuItem("Asistente IA", "#rp-asistente", icon_name="help", order=145)
     )
+    inicio = HomePage.objects.first()
+    item = _item_edicion(inicio, "Página de inicio", 200, "home")
+    if item:
+        menu_items.append(item)
 
     etiquetas = {
         "industria-del-videojuego": ("Ruta: Videojuego", 230),

@@ -1,3 +1,6 @@
+import re
+
+from django import forms
 from django.db import models
 from modelcluster.fields import ParentalKey
 from modelcluster.models import ClusterableModel
@@ -42,6 +45,29 @@ HOME_SECTION_CHOICES = [
 ]
 
 DEFAULT_HOME_SECTIONS = [clave for clave, _label in HOME_SECTION_CHOICES]
+
+COLOR_WIDGET = forms.TextInput(attrs={"type": "color"})
+
+
+def color_seguro(value, fallback):
+    text = (value or "").strip()
+    if re.fullmatch(r"#[0-9A-Fa-f]{6}", text):
+        return text
+    return fallback
+
+
+def embed_de_video(url):
+    text = (url or "").strip()
+    if "youtu.be/" in text:
+        video_id = text.split("youtu.be/")[-1].split("?")[0].split("&")[0]
+        return f"https://www.youtube.com/embed/{video_id}"
+    if "youtube.com" in text and "v=" in text:
+        video_id = text.split("v=")[-1].split("&")[0]
+        return f"https://www.youtube.com/embed/{video_id}"
+    if "vimeo.com/" in text:
+        video_id = text.rstrip("/").split("/")[-1].split("?")[0]
+        return f"https://player.vimeo.com/video/{video_id}"
+    return ""
 
 
 class HomePage(Page):
@@ -198,6 +224,59 @@ class HomePage(Page):
     )
     redes_titulo = models.CharField("título de redes", max_length=180, default="¡SEGUINOS EN NUESTRAS REDES!")
 
+    marca_titulo = models.CharField("nombre del sitio", max_length=80, default="RUTAS PEDAGÓGICAS")
+    marca_subtitulo = models.CharField(
+        "bajada del nombre",
+        max_length=120,
+        default="AGENCIA DE INNOVACIÓN FUEGUINA",
+    )
+    gobierno_texto = models.CharField(
+        "texto de la barra superior",
+        max_length=120,
+        default="Gobierno de Tierra del Fuego",
+    )
+    instagram_usuario = models.CharField("usuario de Instagram", max_length=80, default="@aif.tdf")
+    boton_escuelas = models.CharField("texto del botón de escuelas", max_length=80, default="Escuelas por Ciudad")
+    boton_polos = models.CharField("texto del botón de Polos", max_length=80, default="Polos Creativos")
+    logo = models.ForeignKey(
+        "wagtailimages.Image",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+",
+        verbose_name="logo",
+        help_text="Si lo cargás, reemplaza el ícono de las tres rutas en el encabezado.",
+    )
+    imagen_portada = models.ForeignKey(
+        "wagtailimages.Image",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+",
+        verbose_name="imagen de la portada",
+    )
+    video_titulo = models.CharField("título del video", max_length=180, blank=True, default="Video de presentación")
+    video_url = models.URLField(
+        "video de la portada (YouTube o Vimeo)",
+        blank=True,
+        help_text="Pegá el enlace público. Si también subís un archivo, se muestra el archivo.",
+    )
+    video_archivo = models.ForeignKey(
+        "wagtaildocs.Document",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+",
+        verbose_name="archivo de video de la portada",
+        help_text="MP4, WebM o MOV. El tamaño máximo se configura en Ajustes del sitio.",
+    )
+    color_fondo = models.CharField("color de fondo", max_length=7, default="#fdf6e3")
+    color_texto = models.CharField("color de texto", max_length=7, default="#1a1a1a")
+    color_verde = models.CharField("color verde", max_length=7, default="#38a169")
+    color_azul = models.CharField("color azul", max_length=7, default="#0056b3")
+    color_rojo = models.CharField("color rojo", max_length=7, default="#e53e3e")
+    color_acento = models.CharField("color de acento", max_length=7, default="#e06a12")
+
     content_panels = [
         FieldPanel("title"),
         MultiFieldPanel(
@@ -219,6 +298,51 @@ class HomePage(Page):
 
     edit_handler = TabbedInterface(
         [
+            ObjectList(
+                [
+                    HelpPanel(
+                        heading="Qué se cambia acá",
+                        content=(
+                            "<p>Logo, colores, imagen y video de la página de inicio. "
+                            "Las fotos del carrusel y de la galería se cargan en sus pestañas. "
+                            "Después de guardar, pulsá <strong>Publicar</strong>.</p>"
+                        ),
+                    ),
+                    MultiFieldPanel(
+                        [
+                            FieldPanel("marca_titulo"),
+                            FieldPanel("marca_subtitulo"),
+                            FieldPanel("gobierno_texto"),
+                            FieldPanel("logo"),
+                            FieldPanel("instagram_usuario"),
+                            FieldPanel("boton_escuelas"),
+                            FieldPanel("boton_polos"),
+                        ],
+                        heading="Marca y botones",
+                    ),
+                    MultiFieldPanel(
+                        [
+                            FieldPanel("color_fondo", widget=COLOR_WIDGET),
+                            FieldPanel("color_texto", widget=COLOR_WIDGET),
+                            FieldPanel("color_verde", widget=COLOR_WIDGET),
+                            FieldPanel("color_azul", widget=COLOR_WIDGET),
+                            FieldPanel("color_rojo", widget=COLOR_WIDGET),
+                            FieldPanel("color_acento", widget=COLOR_WIDGET),
+                        ],
+                        heading="Colores",
+                    ),
+                    MultiFieldPanel(
+                        [
+                            FieldPanel("imagen_portada"),
+                            FieldPanel("video_titulo"),
+                            FieldPanel("video_url"),
+                            FieldPanel("video_archivo"),
+                        ],
+                        heading="Imagen y video de la portada",
+                    ),
+                ],
+                heading="Imágenes, colores y videos",
+            ),
             ObjectList(content_panels, heading="Portada"),
             ObjectList(
                 [
@@ -342,6 +466,34 @@ class HomePage(Page):
         if not items:
             return [type("Seccion", (), {"clave": clave, "visible": True})() for clave in DEFAULT_HOME_SECTIONS]
         return [item for item in items if item.visible]
+
+    @property
+    def fondo_css(self):
+        return color_seguro(self.color_fondo, "#fdf6e3")
+
+    @property
+    def texto_css(self):
+        return color_seguro(self.color_texto, "#1a1a1a")
+
+    @property
+    def verde_css(self):
+        return color_seguro(self.color_verde, "#38a169")
+
+    @property
+    def azul_css(self):
+        return color_seguro(self.color_azul, "#0056b3")
+
+    @property
+    def rojo_css(self):
+        return color_seguro(self.color_rojo, "#e53e3e")
+
+    @property
+    def acento_css(self):
+        return color_seguro(self.color_acento, "#e06a12")
+
+    @property
+    def video_embed(self):
+        return embed_de_video(self.video_url)
 
     def alcance_items(self):
         return [item.strip() for item in self.alcance.split(",") if item.strip()]
@@ -638,7 +790,26 @@ class HeroSlide(Orderable):
         related_name="+",
         verbose_name="foto",
     )
-    panels = [FieldPanel("title"), FieldPanel("theme"), FieldPanel("image")]
+    video_url = models.URLField("video (YouTube o Vimeo)", blank=True)
+    video_archivo = models.ForeignKey(
+        "wagtaildocs.Document",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+",
+        verbose_name="archivo de video",
+    )
+    panels = [
+        FieldPanel("title"),
+        FieldPanel("theme"),
+        FieldPanel("image"),
+        FieldPanel("video_url"),
+        FieldPanel("video_archivo"),
+    ]
+
+    @property
+    def video_embed(self):
+        return embed_de_video(self.video_url)
 
 
 class Metric(Orderable):
@@ -701,7 +872,22 @@ class GalleryItem(Orderable):
         related_name="+",
         verbose_name="foto",
     )
-    panels = [FieldPanel("badge"), FieldPanel("title"), FieldPanel("caption"), FieldPanel("theme"), FieldPanel("image")]
+    video_archivo = models.ForeignKey(
+        "wagtaildocs.Document",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+",
+        verbose_name="video",
+    )
+    panels = [
+        FieldPanel("badge"),
+        FieldPanel("title"),
+        FieldPanel("caption"),
+        FieldPanel("theme"),
+        FieldPanel("image"),
+        FieldPanel("video_archivo"),
+    ]
 
 
 class Testimonial(Orderable):
